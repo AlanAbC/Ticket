@@ -27,7 +27,17 @@
 			</div>
 			<div class="small-4 columns">
 				<img src="img/user.png" id="img-user" alt="">
-				<p id="user">Usuario</p>
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <li>
+                        <a href="#" id="user">Usuario</a>
+                        <ul class="menu">
+                            <li><a href="#">Agregar Evento</a></li>
+                            <li><a href="#">Cerrar sesion</a></li>
+                            <!-- ... -->
+                        </ul>
+                    </li>
+                </ul>
+
 			</div>
 		</div>
 		<div class="small-12 columns" id="header-down">
