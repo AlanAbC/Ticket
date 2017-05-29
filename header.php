@@ -20,24 +20,23 @@
 </head>
 	<div class="small-12 columns" id="header">
 		<div class="small-12 columns" id="header-up">
-			<h2 id="logo" class="small-4 columns"><a href="index.php">Tickets</a></h2>
+			<h2 id="logo" class="small-4 columns"><a href="index.php" id="logoa">Tickets</a></h2>
 			<div class="small-4 columns">
 				<input type="text" id="buscador" placeholder="Buscar">
 				<p id="buscar">Buscar</p>
 			</div>
 			<div class="small-4 columns">
-				<img src="img/user.png" id="img-user" alt="">
-                <ul class="dropdown menu" data-dropdown-menu>
+
+                <ul class="dropdown menu" data-dropdown-menu id="ulusuario">
                     <li>
                         <a href="#" id="user">Usuario</a>
                         <ul class="menu">
-                            <li><a href="#">Agregar Evento</a></li>
+                            <li><a href="agregar_evento.php">Agregar Evento</a></li>
                             <li><a href="#">Cerrar sesion</a></li>
                             <!-- ... -->
                         </ul>
                     </li>
                 </ul>
-
 			</div>
 		</div>
 		<div class="small-12 columns" id="header-down">
