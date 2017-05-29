@@ -22,7 +22,7 @@
                         <option value="2">Teatro</option>
                         <option value="3">Comedia</option>
                         <option value="4">Actuacion</option>
-                        <option value="5">Magiar/option>
+                        <option value="5">Magia/option>
                     </select>
                     <textarea name="descripcion" id="form_desc" cols="30" rows="5" placeholder="Descripción"></textarea>
                     <input class="button_form" type="submit" id="btn_cancelar" value="Cancelar">
