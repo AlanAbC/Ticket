@@ -1,10 +1,10 @@
 <?php include 'header.php'; ?>
     <div class="small-12 columns" id="contenedor">
         <row>
-            <div id="form">
+            <form id="form">
                 <div id="contenedor_img">
                     <img src="" alt="" class="img_evento">
-                    <p id="btn_img">Agregar Imagen</p>
+                    <input class="input_form" type="text" id="form_img" placeholder="Ingrese la nueva URL de la imagen" required>
                 </div>
 
                 <div id="contenedor_formulario">
@@ -22,14 +22,14 @@
                         <option value="2">Teatro</option>
                         <option value="3">Comedia</option>
                         <option value="4">Actuacion</option>
-                        <option value="5">Magiar</option>
+                        <option value="5">Magiar/option>
                     </select>
                     <textarea name="descripcion" id="form_desc" cols="30" rows="5" placeholder="Descripción"></textarea>
-                    <p class="button_form" id="cancelar">Cancelar</p>
-                    <p class="button_form" id="crear">Guardar</p>
+                    <input class="button_form" type="submit" id="btn_cancelar" value="Cancelar">
+                    <input class="button_form" type="submit" id="btn_guardar" value="Guardar">
                 </div>
 
-            </div>
+            </form>
         </row>
     </div>
 <?php include 'footer.php'; ?>
