@@ -14,7 +14,7 @@
 
 
     <div class="small-12 columns" id="footer">
-        
+        <div class="small-12 columns" id="clares">Sistema de tickets</div>
         <div class="small-12 columns" id="clares">Clares ti todos los derechos reservados</div>
         <div class="small-12 columns">
             <h6 style="text-align: center;color: #f2f2f2;">We <i class="fa fa-heart"  style="color: #fbabff;"></i> MX</h6>
