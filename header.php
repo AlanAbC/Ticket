@@ -20,7 +20,7 @@
 </head>
 	<div class="small-12 columns" id="header">
 		<div class="small-12 columns" id="header-up">
-			<h2 id="logo" class="small-4 columns">Tickets</h1>
+			<h2 id="logo" class="small-4 columns"><a href="index.php">Tickets</a></h2>
 			<div class="small-4 columns">
 				<input type="text" id="buscador" placeholder="Buscar">
 				<p id="buscar">Buscar</p>
