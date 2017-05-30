@@ -420,39 +420,22 @@ body,body *{
 .p_info{
 	margin-left: 100px !important;
 	border-bottom: 1px solid #4070A2;
-
 }
 
-#img_edit{
-	width: 25px !important;
-	height: 25px !important;
-	position: relative;
-	left: 95%;
-	bottom: 20%;
-}
-#input_img{
-	position: relative;
-	float: left;
-	left: 5px;
-	width: 160px !important;
-	text-align: center;
-	border-radius: 5px;
-	height: 25px;
-	margin-top: 15px;
+.act_button{
+	position: absolute;
+	background:  #4070A2;
+	width: 90px;
+	height: 30px;
+	top:350px;
+	right: 30px;
 	color: white;
-	display: none;
+}
 
+#act_aceptar{
+	display: none;
 }
-#input_img::-webkit-input-placeholder{
-	font-size: 12px;
-}
-#edit_img{
-	width: 25px !important;
-	height: 25px !important;
-	position: relative;
-	left: 85%;
-	bottom: 34%;
-}
+
 /*-----------------------FIN ESTILO info_usuario.php--------*/
 #footer{
 	height: 300px;
