@@ -397,6 +397,29 @@ body,body *{
 	margin-top: 20px;
 }
 /*-----------------------FIN ESTILO ver_evento.php--------*/
+/*-----------------------INICIO ESTILO info_usuario.php--------*/
+#contenedor_info_usuario{
+	position: relative;
+	padding-top: 6%;
+	float: left;
+	width: 75%;
+	margin-top: 10px;
+	height: 100%;
+}
+.p_info{
+	margin-left: 100px !important;
+	border-bottom: 1px solid #4070A2;
+
+}
+
+#img_edit{
+	width: 25px !important;
+	height: 25px !important;
+	position: relative;
+	left: 95%;
+	bottom: 20%;
+}
+/*-----------------------FIN ESTILO info_usuario.php--------*/
 #footer{
 	height: 300px;
 	background-color: #383F49;
