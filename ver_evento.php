@@ -1,48 +1,54 @@
 <?php include 'header.php'; ?>
     <div class="small-12 columns" id="contenedor">
         <row>
-            <div id="form">
-                <div id="contenedor_img">
-                    <img src="" alt="" class="img_evento">
+            <div id="vista">
+                <div id="contenedor_img_vista">
+                    <img src="" alt="" id="img_evento_vista">
+                    <h3 id="titulo_evento_vista">Titulo del evento</h3>
+                    <p id="descripcion_evento_vista">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo blanditiis enim tenetur, totam, debitis alias id eaque fugiat amet placeat modi magni ut dolor vitae. Dolorum saepe voluptatum sint aliquam.</p>
                 </div>
-                <div id="contenedor_formulario">
-                    <div class="txt_cont">
-                        <p class="txt_titulo">Nombre:</p>
-                        <p class="txt_contenido"></p>
+                <div id="contenedor_ubicacion">
+                    <p id="informacion">Informacion</p>
+                    <div id="infotit">
+                        <p id="infon"><b>Lugar:</b></p>
+                        <p id="info">Aqui va el #</p>
                     </div>
-                    <div class="txt_cont">
-                        <p class="txt_titulo">Estado:</p>
-                        <p class="txt_contenido"></p>
+                    <div id="infotit">
+                        <p id="infon"><b>Fecha:</b></p>
+                        <p id="info">Aqui va el #</p>
                     </div>
-                    <div class="txt_cont">
-                        <p class="txt_titulo">Ciudad:</p>
-                        <p class="txt_contenido"></p>
+                    <div id="infotit">
+                        <p id="infon"><b>Hora:</b></p>
+                        <p id="info">Aqui va el #</p>
                     </div>
-                    <div class="txt_cont">
-                        <p class="txt_titulo">Direccion:</p>
-                        <p class="txt_contenido"></p>
+                    <div id="infotit">
+                        <p id="infon"><b>Estado:</b></p>
+                        <p id="info">Aqui va el #</p>
                     </div>
-                    <div class="txt_cont">
-                        <p class="txt_titulo">Lugar:</p>
-                        <p class="txt_contenido"></p>
+                    <div id="infotit">
+                        <p id="infon"><b>Ciudad:</b></p>
+                        <p id="info">Aqui va el #</p>
                     </div>
-                    <div class="txt_cont">
-                        <p class="txt_titulo">Fecha:</p>
-                        <p class="txt_contenido"></p>
+                    <div id="infotit">
+                        <p id="infon"><b>Direccion:</b></p>
+                        <p id="info">Aqui va el #</p>
                     </div>
-                    <div class="txt_cont">
-                        <p class="txt_titulo">Hora:</p>
-                        <p class="txt_contenido"></p>
+                </div>
+                <div id="contenedor_precio">
+                    <p id="precios">Precios</p>
+                    <div id="preciostit">
+                        <p id="precion"><b>Precio 1</b></p>
+                        <p id="precio">Aqui va el #</p>
                     </div>
-                    <div class="txt_cont">
-                        <p class="txt_titulo">Categoria:</p>
-                        <p class="txt_contenido"></p>
+                    <div id="preciostit">
+                        <p id="precion"><b>Precio 2</b></p>
+                        <p id="precio">Aqui va el #</p>
                     </div>
-                    <div class="txt_cont" id="txt_contdes">
-                        <p class="txt_titulo" id="txt_titulodes">Descripcion:</p>
-                        <p class="txt_contenido" id="txt_contenidodes"></p>
+                    <div id="preciostit">
+                        <p id="precion"><b>Precio 3</b></p>
+                        <p id="precio">Aqui va el #</p>
                     </div>
-                    <p class="button_comprar" id="comprar">Comprar Boletos</p>
+                    <p class="" id="comprar">Comprar Boletos</p>
                 </div>
 
             </div>

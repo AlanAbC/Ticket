@@ -236,74 +236,165 @@ body,body *{
 	height: 25px;
 }
 /*-----------------------FIN ESTILO agregar_evento.php--------*/
+
 /*-----------------------ESTILO ver_evento.php--------*/
-.txt_cont{
-	width: 45%;
-	margin-left: 2%;
+#vista{
+	width: 70%;
+	margin-left: 15%;
+	height:auto;
+	margin-top:20px;
+	border:1px solid #d9d9d9;
+	background-color: #fff;
+	position: relative;float: left;
+	box-shadow: 3px 3px 1px rgba(0,0,0,.3);
+}
+#contenedor_img_vista{
+	width: 100%;
+	height: 200px;
 	position: relative;
 	float: left;
 	background-color: transparent;
-	height: 40px;
+	border-bottom: 1px solid #d9d9d9;
+}
+#img_evento_vista{
+	width: 25%;
+	height: 175px;
+	background-color: #f2f2f2;
+	position: relative;
+	float: left;
 	margin-top: 10px;
+	margin-left: 20px;
 }
-#txt_contdes{
-	width: 90% !important;
-	margin-left: 2%;
-	height: 90px;
-}
-.txt_titulo{
-	font-size: 17px;
-	background-color: transparent;
+#titulo_evento_vista{
+	width: 70%;
 	position: relative;
 	float: left;
-	width: 20%;
 	color: #383F49;
-	height: 40px;
+	margin-left: 15px;
+	margin-top: 10px;
+	background-color: transparent;
 }
-#txt_titulodes{
-	width: 100%;
-	height: 30px
-}
-.txt_contenido{
+#descripcion_evento_vista{
+	width: 70%;
+	margin-left: 15px;
+	margin-top: 10px;
 	font-size: 15px;
-	background-color: transparent;
+	height: auto;
+	color: #383F49;
 	position: relative;
 	float: left;
-	width: 80%;
+}
+#contenedor_ubicacion{
+	width: 70%;
+	position: relative;
+	float: left;
+	height: 300px;
+	background-color: transparent;
+	border-right: 1px solid #d9d9d9;
+}
+#contenedor_precio{
+	position: relative;
+	float: left;
+	background-color: transparent;
+	width: 30%;
+	height: 300px;
+}
+#informacion{
+	width: 100%;
+	height: 30px;
+	color: #fff;
+	background-color: #4070A2;
+	border-right: 1px solid #fff;
+	font-size: 20px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+#precios{
+	width: 100%;
+	height: 30px;
+	color: #fff;
+	background-color: #4070A2;
+	font-size: 20px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+#infotit{
+	position: relative;
+	float: left;
+	background-color: transparent;
+	margin-top: 5px;
+	width: 100%;
+	height: 30px;
+	border-bottom: 1px solid #d9d9d9;
+}
+#infon{
+	width: 20%;
+	position: relative;
+	float: left;
+	background-color: transparent;
+	height: 100%;
 	color: #383F49;
-	height: 40px;
+	padding-left: 25px;
+	font-size: 15px;
+	box-sizing: border-box;
 }
-#txt_contenidodes{
+#info{
+	width: 80%;
+	position: relative;
+	float: left;
+	background-color: transparent;
+	height: 100%;
+	font-size: 14px;
+	color: #383F49;
+
+}
+#preciostit{
+	position: relative;
+	float: left;
+	background-color: transparent;
+	margin-top: 0px;
 	width: 100%;
-	height: 60px;
+	height: auto;
+}
+#precion{
+	width: 100%;
+	position: relative;
+	float: left;
+	height: auto;
+	color: #383F49;
+	padding-left: 25px;
+	font-size: 15px;
+	box-sizing: border-box;
+	background-color: transparent;
+}
+#precio{
+	width: 100%;
+	position: relative;
+	float: left;
+	background-color: transparent;
+	height: auto;
+	font-size: 14px;
+	color: #383F49;
+	padding-left: 30px;
+	box-sizing: border-box;
 	margin-top: -15px;
+
 }
-.button_comprar{
-    position: relative;
-    float: right;
-    width: 180px;
-    text-align: center;
-    border-radius: 5px;
-    height: 25px;
-    margin-top: 30px;
-    background-color: #4070A2;
-    color: white;
-    box-shadow: 3px 3px 1px rgba(0,0,0,.3);
-}
-.button_comprar:before{
-	cursor: pointer;
-	content:'';
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 0px;
-	background: rgba(255,255,255,0.2);
-	border-radius: 5px;
-	transition: all .2s ease;
-}
-.button_comprar:hover:before {
-	height: 25px;
+#comprar{
+	font-size: 13px;
+	width: 50%;
+	background-color: #4070A2;
+	height: 30px;
+	position: relative;
+	float: left;
+	text-align: center;
+	color: #fff;
+	left: 50%;
+	margin-left: -25%;
+	padding-top: 5px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	margin-top: 20px;
 }
 /*-----------------------FIN ESTILO ver_evento.php--------*/
 #footer{
