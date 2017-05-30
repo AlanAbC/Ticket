@@ -423,13 +423,47 @@ body,body *{
 
 }
 
-#img_edit{
+#img_1, #img_11{
 	width: 25px !important;
 	height: 25px !important;
-	position: relative;
+	position: absolute;
 	left: 95%;
-	bottom: 20%;
+	bottom: 83%;
 }
+#img_11{
+	display: none;
+}
+#img_2, #img_21{
+	width: 25px !important;
+	height: 25px !important;
+	position: absolute;
+	left: 95%;
+	bottom: 73%;
+}
+#img_21{
+	display: none;
+}
+#img_3, #img_31{
+	width: 25px !important;
+	height: 25px !important;
+	position: absolute;
+	left: 95%;
+	bottom: 63%;
+}
+#img_31{
+	display: none;
+}
+#img_4, #img_41{
+	width: 25px !important;
+	height: 25px !important;
+	position: absolute;
+	left: 95%;
+	bottom: 53%;
+}
+#img_41{
+	display: none;
+}
+
 #input_img{
 	position: relative;
 	float: left;
@@ -446,12 +480,15 @@ body,body *{
 #input_img::-webkit-input-placeholder{
 	font-size: 12px;
 }
-#edit_img{
+#edit_img, #edit_img2{
 	width: 25px !important;
 	height: 25px !important;
-	position: relative;
+	position: absolute;
 	left: 85%;
-	bottom: 34%;
+	bottom: 76%;
+}
+#edit_img2{
+	display: none;
 }
 /*-----------------------FIN ESTILO info_usuario.php--------*/
 #footer{
