@@ -9,15 +9,15 @@
 	<body style="background-image: url('img/login.jpg');">
 	<div class="small-12 columns" id="mascara">
 		<row>
-			<form id="contenedor">
+			<div id="contenedor">
 				<p id="titulo">Login</p>
 				<p id="usuario">Usuario</p>
 				<input type="text" placeholder="Usuario" id="input_usuario" required>
 				<p id="password">Contraseña</p>
 				<input type="password" placeholder="Contraseña" id="input_password" required>
 				<p id="registro"><a href="registro.php">¿Eres nuevo? Registrate aqui</a></p>
-				<input type="submit" id="login" value="Iniciar Sesion"/>
-			</form>
+                <p id="login">Iniciar Sesion</p>
+			</div>
 		</row>
 	</div>
     <script src="js/jquery.min.js"></script>
