@@ -9,7 +9,7 @@
 
                 <div id="contenedor_info_usuario">
                     <img src="img/p.png" id="img_edit">
-                    <p class="p_info" id="info_nombre">Nombre</p>
+                    <p class="p_info" id="info_nombre">Nombres</p>
                     <img src="img/p.png" id="img_edit">
                     <p class="p_info" id="info_correo">coreo@vaaqui.com</p>
                     <img src="img/p.png" id="img_edit">
