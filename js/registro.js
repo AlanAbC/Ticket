@@ -25,7 +25,7 @@ $('#registro').click(function(){
             type: 'warning',
             confirmButtonText: 'Continuar'
         });
-    }else if(pass1 == undefined || pass1 == ""){
+    }else if(pass1 == ""){
         swal({
             title: 'Falta ingresar una contraseña',
             type: 'warning',
