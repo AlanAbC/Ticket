@@ -3,12 +3,12 @@
     <script src="js/swiper.min.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/foundation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.4/sweetalert2.min.js"></script>
     <script src="js/skrollr.min.js"></script>
 	<script src="js/mandrill.js"></script>
     <script src="js/swal.js"></script>
     <script src="js/nicescroll.js"></script>
     <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.4/sweetalert2.common.js"></script>
 
 
 <!-- SCRIPT ZONE -->
