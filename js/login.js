@@ -1,4 +1,5 @@
-$("#login").click(function(){
+
+    $("#login").click(function(){
     var correo = $("#input_usuario").val();
     var contrasena = $("#input_password").val();
     $.getJSON( "http://localhost/api/login.php?a=login&cor=" + correo + "&pas=" + contrasena, function( data ) {
@@ -13,7 +14,13 @@ $("#login").click(function(){
             console.log(items);
         }else{
             //Aqui rgresa msg de usuario o contraseña incorrectos o de algun error
-            alert(data['msg']);
+            swal({
+              title: 'Usuario o Contraseña incorrectos!',
+              type: 'error',
+              confirmButtonText: 'Continuar'
+            })
+            
         }
     });
-});
+    });
+

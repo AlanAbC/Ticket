@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/hover.css">
     <link rel="stylesheet" href="css/swal.css">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.4/sweetalert2.css">
 
     <!-- STYLE ZONE -->
 

@@ -18,17 +18,18 @@
             </form>
         </row>
     </div>
-<?php include 'footer.php'; ?>
 <script>
-    $("#act_actualizar").click(function(event) {
-        $("#act_aceptar").css('display', 'block');
-        $("#act_actualizar").css('display', 'none');
-    });
-    $("#act_aceptar").click(function(event) {
-        $("#act_aceptar").css('display', 'none');
-        $("#act_actualizar").css('display', 'block');
-    });
+        $("#act_actualizar").click(function(event) {
+            $("#act_aceptar").css('display', 'block');
+            $("#act_actualizar").css('display', 'none');
+        });
+        $("#act_aceptar").click(function(event) {
+            $("#act_aceptar").css('display', 'none');
+            $("#act_actualizar").css('display', 'block');
+        });
 
 
 
 </script>
+
+<?php include 'footer.php'; ?>
