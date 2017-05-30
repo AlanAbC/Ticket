@@ -10,6 +10,10 @@
                 <div id="contenedor_ubicacion">
                     <p id="informacion">Informacion</p>
                     <div id="infotit">
+                        <p id="infon"><b>Categoria:</b></p>
+                        <p id="info">Aqui va el #</p>
+                    </div>
+                    <div id="infotit">
                         <p id="infon"><b>Lugar:</b></p>
                         <p id="info">Aqui va el #</p>
                     </div>
@@ -33,6 +37,7 @@
                         <p id="infon"><b>Direccion:</b></p>
                         <p id="info">Aqui va el #</p>
                     </div>
+
                 </div>
                 <div id="contenedor_precio">
                     <p id="precios">Precios</p>
