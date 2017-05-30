@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 <!-- STYLE ZONE -->
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/swiper.min.css">  
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/foundation.min.css">
@@ -32,6 +32,7 @@
                         <a href="#" id="user">Usuario</a>
                         <ul class="menu">
                             <li><a href="agregar_evento.php">Agregar Evento</a></li>
+                            <li><a href="info_usuario.php">Informacion Usuario</a></li>
                             <li><a href="#">Cerrar sesion</a></li>
                             <!-- ... -->
                         </ul>
@@ -43,10 +44,10 @@
 			
 			<div class="large-12 columns hide-for-medium-only hide-for-small-only"></div>
 			<ul class="menu ">
-			  <li><a href="#acerca">Conciertos</a></li>
-			  <li><a href="#nuestros">Teatro</a></li>
-			  <li><a href="#contacto">Deportes</a></li>
-			  <li><a href="#contacto">Culturales</a></li>
+			  <li><a href="">Conciertos</a></li>
+			  <li><a href="">Teatro</a></li>
+			  <li><a href="">Deportes</a></li>
+			  <li><a href="">Culturales</a></li>
 			</ul>
 		</div>
 		
