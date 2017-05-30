@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include 'header_main.php'; ?>
 <div class="small-12 columns" id="contenedor">
 	<row>
 		<div class="small-12 medium-4 large-2 end columns evento">
