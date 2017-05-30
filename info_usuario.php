@@ -7,7 +7,7 @@
                 </div>
 
                 <div id="contenedor_info_usuario">
-                    <p class="p_info" id="info_nombre">Nombres</p>
+                    <p class="p_info" id="info_nombres">Nombres</p>
                     <p class="p_info" id="info_correo">coreo@vaaqui.com</p>
                     <p class="p_info" id="info_direccion">ubicacion #16</p>
                     <p class="p_info" id="info_telefono">4545123548</p>
