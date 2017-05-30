@@ -11,8 +11,8 @@
 		<row>
 			<div id="contenedor">
 				<p id="titulo">Login</p>
-				<p id="usuario">Usuario</p>
-				<input type="text" placeholder="Usuario" id="input_usuario" required>
+				<p id="usuario">Correo</p>
+				<input type="text" placeholder="Correo" id="input_usuario" required>
 				<p id="password">Contraseña</p>
 				<input type="password" placeholder="Contraseña" id="input_password" required>
 				<p id="registro"><a href="registro.php">¿Eres nuevo? Registrate aqui</a></p>
