@@ -1,3 +1,4 @@
+<?php session_start(); //session_destroy();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +27,7 @@
             <p id="buscar">Buscar</p>
         </div>
         <div class="small-4 columns">
-            <p id="iniciar"><a href="login.php">Iniciar Sesion</a></p>
+            <p id="iniciar"><a href="login.php">Iniciar Sesion <?php //print($_SESSION['correo']); ?></a></p>
         </div>
     </div>
     <div class="small-12 columns" id="header-down">
