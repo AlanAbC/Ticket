@@ -4,7 +4,16 @@ $(document).ready(function(){
 });
 
 $(window).load(function(){
-	cargarEventos();
+
+    // Obtencion de la url
+    var url = window.location.pathname;
+
+    // Validacion de la url y dependiendo de la misma hace una accion
+    if(url == "/Ticket/index.php"){
+        cargarEventos();
+    }else if(url == "/Ticket/ver_evento.php"){
+        cargarEvento();
+    }
 });
 
 /* INICIO INDEX ------------------------------------------------------------------------------------------------------*/
