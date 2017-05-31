@@ -14,7 +14,7 @@
     }
 ?>
 
-    <div class="small-12 columns" id="contenedor">
+    <div class="small-12 columns" id="contenedorInfo">
         <row>
             <div id="vista">
                 <div id="contenedor_img_vista">
