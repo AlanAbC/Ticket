@@ -15,173 +15,55 @@ function cargarEventos(){
 
 	//Validaciones para determinar si mostrara todos los eventos o los filtrara por categoria
 	if(categoria == undefined){
-        // Conexion con la api pidiendo todos los eventos existentes
-        $.getJSON("http://localhost/api/eventos.php?a=getEventos",function(data){
-
-            // Obtencion de la respuesta de la api
-            var respuesta = data['res'];
-
-            // Comprobacion del resultado, en caso de que sea 1 rellena la paguina con
-            // los eventos disponibles, en caso de que sea 0 muestra mensaje en pantalla
-            // de las respuesta de la api
-            if (respuesta === "1") {
-
-                // Asignacion del contenedor de los eventos
-                var contenedor = $('#eventos');
-
-                //Aqui va la la creacion de los eventos a mostrar
-                $.each(data['eventos'], function(i, item){
-                    var evento = '<div class="small-12 medium-4 large-2 end columns evento" id= "' + item.id + '">' +
-                        '<img src="' + item.foto + '">' +
-                        '<p class="titulo_evento">' + item.nombre + '</p>' +
-                        '</div>';
-                    contenedor.append(evento);
-                });
-            } else if (respuesta === "0") {
-                //Aqui regresa msg de error de la api
-                swal({
-                    title: data['msg'],
-                    type: 'error',
-                    confirmButtonText: 'Continuar'
-                });
-            }
-
-        });
+        llenarEventos("getEventos")
 	}else{
 		if(categoria == "concierto"){
-            // Conexion con la api pidiendo todos los eventos existentes
-            $.getJSON("http://localhost/api/eventos.php?a=getConciertos",function(data){
-
-                // Obtencion de la respuesta de la api
-                var respuesta = data['res'];
-
-                // Comprobacion del resultado, en caso de que sea 1 rellena la paguina con
-                // los eventos disponibles, en caso de que sea 0 muestra mensaje en pantalla
-                // de las respuesta de la api
-                if (respuesta === "1") {
-
-                    // Asignacion del contenedor de los eventos
-                    var contenedor = $('#eventos');
-
-                    //Aqui va la la creacion de los eventos a mostrar
-                    $.each(data['eventos'], function(i, item){
-                        var evento = '<div class="small-12 medium-4 large-2 end columns evento" id= "' + item.id + '">' +
-                            '<img src="' + item.foto + '">' +
-                            '<p class="titulo_evento">' + item.nombre + '</p>' +
-                            '</div>';
-                        contenedor.append(evento);
-                    });
-                } else if (respuesta === "0") {
-                    //Aqui regresa msg de error de la api
-                    swal({
-                        title: data['msg'],
-                        type: 'error',
-                        confirmButtonText: 'Continuar'
-                    });
-                }
-
-            });
+            llenarEventos("getConciertos");
 		}else if(categoria == "teatro"){
-            // Conexion con la api pidiendo todos los eventos existentes
-            $.getJSON("http://localhost/api/eventos.php?a=getTeatro",function(data){
-
-                // Obtencion de la respuesta de la api
-                var respuesta = data['res'];
-
-                // Comprobacion del resultado, en caso de que sea 1 rellena la paguina con
-                // los eventos disponibles, en caso de que sea 0 muestra mensaje en pantalla
-                // de las respuesta de la api
-                if (respuesta === "1") {
-
-                    // Asignacion del contenedor de los eventos
-                    var contenedor = $('#eventos');
-
-                    //Aqui va la la creacion de los eventos a mostrar
-                    $.each(data['eventos'], function(i, item){
-                        var evento = '<div class="small-12 medium-4 large-2 end columns evento" id= "' + item.id + '">' +
-                            '<img src="' + item.foto + '">' +
-                            '<p class="titulo_evento">' + item.nombre + '</p>' +
-                            '</div>';
-                        contenedor.append(evento);
-                    });
-                } else if (respuesta === "0") {
-                    //Aqui regresa msg de error de la api
-                    swal({
-                        title: data['msg'],
-                        type: 'error',
-                        confirmButtonText: 'Continuar'
-                    });
-                }
-
-            });
+            llenarEventos("getTeatro");
 		}else if(categoria == "deporte"){
-            // Conexion con la api pidiendo todos los eventos existentes
-            $.getJSON("http://localhost/api/eventos.php?a=getDeportes",function(data){
-
-                // Obtencion de la respuesta de la api
-                var respuesta = data['res'];
-
-                // Comprobacion del resultado, en caso de que sea 1 rellena la paguina con
-                // los eventos disponibles, en caso de que sea 0 muestra mensaje en pantalla
-                // de las respuesta de la api
-                if (respuesta === "1") {
-
-                    // Asignacion del contenedor de los eventos
-                    var contenedor = $('#eventos');
-
-                    //Aqui va la la creacion de los eventos a mostrar
-                    $.each(data['eventos'], function(i, item){
-                        var evento = '<div class="small-12 medium-4 large-2 end columns evento" id= "' + item.id + '">' +
-                            '<img src="' + item.foto + '">' +
-                            '<p class="titulo_evento">' + item.nombre + '</p>' +
-                            '</div>';
-                        contenedor.append(evento);
-                    });
-                } else if (respuesta === "0") {
-                    //Aqui regresa msg de error de la api
-                    swal({
-                        title: data['msg'],
-                        type: 'error',
-                        confirmButtonText: 'Continuar'
-                    });
-                }
-
-            });
+            llenarEventos("getDeportes");
 		}else if(categoria == "cultural"){
-            // Conexion con la api pidiendo todos los eventos existentes
-            $.getJSON("http://localhost/api/eventos.php?a=getCulturales",function(data){
-
-                // Obtencion de la respuesta de la api
-                var respuesta = data['res'];
-
-                // Comprobacion del resultado, en caso de que sea 1 rellena la paguina con
-                // los eventos disponibles, en caso de que sea 0 muestra mensaje en pantalla
-                // de las respuesta de la api
-                if (respuesta === "1") {
-
-                    // Asignacion del contenedor de los eventos
-                    var contenedor = $('#eventos');
-
-                    //Aqui va la la creacion de los eventos a mostrar
-                    $.each(data['eventos'], function(i, item){
-                        var evento = '<div class="small-12 medium-4 large-2 end columns evento" id= "' + item.id + '">' +
-                            '<img src="' + item.foto + '">' +
-                            '<p class="titulo_evento">' + item.nombre + '</p>' +
-                            '</div>';
-                        contenedor.append(evento);
-                    });
-                } else if (respuesta === "0") {
-                    //Aqui regresa msg de error de la api
-                    swal({
-                        title: data['msg'],
-                        type: 'error',
-                        confirmButtonText: 'Continuar'
-                    });
-                }
-
-            });
-		}
+            llenarEventos("getCulturales");
+		}else{
+            llenarEventos("getConciertos");
+        }
 	}
+}
+
+function llenarEventos(categoria){
+    // Conexion con la api pidiendo todos los eventos existentes
+    $.getJSON("http://localhost/api/eventos.php?a=" + categoria,function(data){
+
+        // Obtencion de la respuesta de la api
+        var respuesta = data['res'];
+
+        // Comprobacion del resultado, en caso de que sea 1 rellena la paguina con
+        // los eventos disponibles, en caso de que sea 0 muestra mensaje en pantalla
+        // de las respuesta de la api
+        if (respuesta === "1") {
+
+            // Asignacion del contenedor de los eventos
+            var contenedor = $('#eventos');
+
+            //Aqui va la la creacion de los eventos a mostrar
+            $.each(data['eventos'], function(i, item){
+                var evento = '<div class="small-12 medium-4 large-2 end columns evento" id= "' + item.id + '">' +
+                    '<img src="' + item.foto + '">' +
+                    '<p class="titulo_evento">' + item.nombre + '</p>' +
+                    '</div>';
+                contenedor.append(evento);
+            });
+        } else if (respuesta === "0") {
+            //Aqui regresa msg de error de la api
+            swal({
+                title: data['msg'],
+                type: 'error',
+                confirmButtonText: 'Continuar'
+            });
+        }
+
+    });
 }
 
 /* Copyright (c) 2006 Mathias Bank (http://www.mathias-bank.de)
