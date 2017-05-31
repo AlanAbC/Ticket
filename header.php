@@ -34,7 +34,7 @@
                         <ul class="menu">
                             <li><a href="agregar_evento.php">Agregar Evento</a></li>
                             <li><a href="info_usuario.php">Informacion Usuario</a></li>
-                            <li><a href="#">Cerrar sesion</a></li>
+                            <li><a href="php/cerrarSesion.php">Cerrar sesion</a></li>
                             <!-- ... -->
                         </ul>
                     </li>

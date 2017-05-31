@@ -19,17 +19,17 @@ $("#login").click(function(){
         });
     }else {
 
-        // Conexion con la api para validar que exista el usuario ongresado
+        // Conexion con la api para validar que exista el usuario ingresado
         $.getJSON("http://localhost/api/login.php?a=login&cor=" + correo + "&pas=" + contrasena, function (data) {
 
             // Obtencion de la respuesta de la api
             var respuesta = data['res'];
 
-            // Comprobacion del resultad, en caso de que sea 1 redirecciona a otra paguina donde
+            // Comprobacion del resultado, en caso de que sea 1 redirecciona a otra paguina donde
             // se creara la sesion de usuario y redireccionara al index, en caso de que sea 0
             // muestra mensaje en pantalla de las respuesta de la api
             if (respuesta === "1") {
-                //Aqui va la redireccion hacia el index con los parametrso del usuario para crear la session
+                //Aqui va la redireccion hacia el index con los parametros del usuario para crear la session
                 $(location).attr("href", "php/login.php?c=" + correo + "&p=" + contrasena);
             } else if (respuesta === "0") {
                 //Aqui regresa msg de usuario o contraseña incorrectos o de algun error
