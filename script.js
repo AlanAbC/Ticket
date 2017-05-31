@@ -115,6 +115,47 @@ $("#comprarCan").click(function(event) {
 $("#agregar_zona").click(function(event) {
     $(this).before("<input type='text' class='nombre_zona' placeholder='Nombre de la zona'> <input type='number' class='lugares_zona' placeholder='Cantidad de lugares'> <input type='number' class='precio_zona' placeholder='$ Precio'>");
 });
+//funcion para verificar si se desea editar informacion de usuario
+$("#act_actualizar").click(function(event) {
+    $("#info_usuario").css({
+        display: 'none'
+    });
+    $("#form_info_usuario").slideToggle("slow");
+});
+//funcion para desplegar mensaje de confirmacion de actualizacion de usuario y para guardar la informacion actualizada7
+$("#act_guardar").click(function(event) {
+    swal({
+        title: '¿Seguro que deseas modificar tu informacion?',
+          type: 'info',
+          showCloseButton: true,
+          showCancelButton: true,
+          confirmButtonText:
+            'Continuar',
+          cancelButtonText:
+            'Cancelar' 
+        });
+});
+//Funcion para la confirmacion de eliminacion de usuario 
+$("#act_eliminar").click(function(event) {
+    swal({
+        title: '¿Seguro que deseas eliminar tu usuario?',
+        text: 'Toda tu informacion y eventos asignados seran eliminados',
+          type: 'info',
+          showCloseButton: true,
+          showCancelButton: true,
+          confirmButtonText:
+            'Continuar',
+          cancelButtonText:
+            'Cancelar' 
+        });
+});
+//Funcion para cancelar la edicios de usuario
+$("#act_cancelar").click(function(event) {
+     $("#info_usuario").slideToggle("slow");
+    $("#form_info_usuario").css({
+        display: 'none'
+    });
+});
 /* Copyright (c) 2006 Mathias Bank (http://www.mathias-bank.de)
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
