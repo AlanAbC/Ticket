@@ -48,10 +48,10 @@ function llenarEventos(categoria){
 
             //Aqui va la la creacion de los eventos a mostrar
             $.each(data['eventos'], function(i, item){
-                var evento = '<div class="small-12 medium-4 large-2 end columns evento" id= "' + item.id + '">' +
-                    '<img src="' + item.foto + '">' +
-                    '<p class="titulo_evento">' + item.nombre + '</p>' +
-                    '</div>';
+                var evento = '<div class="small-12 medium-4 large-2 end columns eventocon"  id= "' + item.id + '" >' +
+                                '<div class="evento" style="background-image: url('+ item.foto +');" >' +'</div>'+
+                                 '<p class="titulo_evento">' + item.nombre + '</p>'+
+                                '</div>';
                 contenedor.append(evento);
             });
         } else if (respuesta === "0") {
@@ -66,6 +66,54 @@ function llenarEventos(categoria){
     });
 }
 
+//funcion para obtener el id del boton para comprar boletos y desplegar la ventana de compra
+$(".comprar").click(function(event) {
+    var id=$(this).attr("id");
+    switch (id) {
+        case "comprarA":
+            $("#categoria").text('Zona A');
+            break;
+         case "comprarB":
+            $("#categoria").text('Zona B');
+            break;
+         case "comprarC":
+            $("#categoria").text('Zona C');
+            break;
+        default:
+            break;
+    }
+    $("#vista").css({
+        display : 'none' 
+    });
+    $("#compraboleto").css({
+        display : 'block' 
+    });
+});
+
+//Funcion para realizar la confirmacion de compra y  enviar los datos a la base de datos 
+$("#comprarCon").click(function(event) {
+
+    swal({
+        title: '¿Seguro que deseas comprar el boleto?',
+          type: 'info',
+          showCloseButton: true,
+          showCancelButton: true,
+          confirmButtonText:
+            'Continuar',
+          cancelButtonText:
+            'Cancelar' 
+        });
+});
+//Funcion para cancelar la compra del boleto
+$("#comprarCan").click(function(event) {
+
+   $("#vista").css({
+        display : 'block' 
+    });
+    $("#compraboleto").css({
+        display : 'none' 
+    });
+});
 /* Copyright (c) 2006 Mathias Bank (http://www.mathias-bank.de)
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.

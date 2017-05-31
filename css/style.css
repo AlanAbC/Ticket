@@ -116,24 +116,36 @@ body,body *{
 }
 
 /*-----------------------ESTILO index.php--------*/
-.evento{
-	height: 150px;
-	background-color: #d9d9d9;
+eventocon{
+	height: auto;
+	background-color: transparent;
 	position: relative;
 	float: left;
 	margin-left: 30px;
 	margin-top: 5px;
 	margin-bottom: 15px;
+}
+.evento{
+	height: 150px;
+	width: 100%;
+	background-color: #d9d9d9;
+	position: relative;
+	float: left;
 	box-shadow: 7px 7px 3px rgba(0,0,0,.1);
 	border-radius: 5px;
 	padding: 0px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 .titulo_evento{
-	height: 30px;
+	height: auto;
 	width: 100%;
+	position: relative;
+	float: left;
 	color: #4070A2;
-	margin-top: 120px;
-	font-size: 20px;
+	margin-top: 10px;
+	font-size: 13px;
 	text-align: center;
 }
 .evento:before {
@@ -255,6 +267,7 @@ body,body *{
 	background-color: #fff;
 	position: relative;float: left;
 	box-shadow: 3px 3px 1px rgba(0,0,0,.3);
+	display: block;
 }
 #contenedor_img_vista{
 	width: 100%;
@@ -366,7 +379,7 @@ body,body *{
 	height: auto;
 }
 #precion{
-	width: 100%;
+	width: 40%;
 	position: relative;
 	float: left;
 	height: auto;
@@ -389,22 +402,121 @@ body,body *{
 	margin-top: -15px;
 
 }
-#comprar{
-	font-size: 13px;
-	width: 50%;
+.comprar{
+	font-size: 11px;
+	width: 40%;
 	background-color: #4070A2;
-	height: 30px;
+	height: 20px;
 	position: relative;
 	float: left;
 	text-align: center;
 	color: #fff;
-	left: 50%;
-	margin-left: -25%;
-	padding-top: 5px;
+	left: 5%;
+	padding-top: 2px;
 	box-sizing: border-box;
 	border-radius: 10px;
-	margin-top: 20px;
 }
+.comprar:before{
+	cursor: pointer;
+	content:'';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 0px;
+	background: rgba(255,255,255,0.2);
+	border-radius: 5px;
+	transition: all .2s ease;
+}
+.comprar:hover:before{
+	height: 20px;
+}
+/*----------------------Estilo Comprar boleto----------------*/
+#compraboleto{
+	display: none;
+	width: 70%;
+	margin-left: 15%;
+	height:auto;
+	margin-top:20px;
+	border:1px solid #d9d9d9;
+	background-color: #fff;
+	position: relative;float: left;
+	box-shadow: 3px 3px 1px rgba(0,0,0,.3);
+}
+#contenedor_compra{
+	width: 100%;
+	position: relative;
+	float: left;
+	height: 80px;
+	background-color: transparent;
+}
+#categoria{
+	width: 55%;
+	position: relative;
+	float: left;
+	padding-left: 50px;
+	box-sizing: border-box;
+	color: #383F49;
+	margin-top: 15px;
+}
+#comprarCon{
+	width: 17%;
+	height: 30px;
+	background-color: #4070A2;
+	position: relative;
+	float: left;
+	color: #fff;
+	border-radius: 10px;
+	text-align: center;
+	padding-top: 3px;
+	box-sizing: border-box;
+	margin-top: 25px;
+}
+.comprarCon:before{
+	cursor: pointer;
+	content:'';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 0px;
+	background: rgba(255,255,255,0.2);
+	border-radius: 5px;
+	transition: all .2s ease;
+}
+.comprarCon:hover:before{
+	height: 30px;
+}
+#comprarCan{
+	width: 17%;
+	height: 30px;
+	background-color: #4070A2;
+	position: relative;
+	float: left;
+	color: #fff;
+	border-radius: 10px;
+	text-align: center;
+	padding-top: 3px;
+	box-sizing: border-box;
+	margin-top: 25px;
+	margin-left: 15px;
+}
+.comprarCan:before{
+	cursor: pointer;
+	content:'';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 0px;
+	background: rgba(255,255,255,0.2);
+	border-radius: 5px;
+	transition: all .2s ease;
+}
+.comprarCan:hover:before{
+	height: 30px;
+}
+/*-----------------------FIN ESTILO comprar boleto--------*/
 /*-----------------------FIN ESTILO ver_evento.php--------*/
 /*-----------------------INICIO ESTILO info_usuario.php--------*/
 #info_usuario{
