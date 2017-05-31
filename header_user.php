@@ -45,10 +45,10 @@
 
         <div class="large-12 columns hide-for-medium-only hide-for-small-only"></div>
         <ul class="menu ">
-            <li><a href="">Conciertos</a></li>
-            <li><a href="">Teatro</a></li>
-            <li><a href="">Deportes</a></li>
-            <li><a href="">Culturales</a></li>
+            <li><a href="index.php?c=concierto">Conciertos</a></li>
+            <li><a href="index.php?c=teatro">Teatro</a></li>
+            <li><a href="index.php?c=deporte">Deportes</a></li>
+            <li><a href="index.php?c=cultural">Culturales</a></li>
         </ul>
     </div>
 
