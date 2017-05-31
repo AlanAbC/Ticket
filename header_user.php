@@ -32,7 +32,7 @@
                 <li>
                     <a href="#" id="user">Usuario</a>
                     <ul class="menu">
-                        <li><a href="agregar_evento.php">Ver eventos comprados</a></li>
+                        <li><a href="index.php">Ver eventos comprados</a></li>
                         <li><a href="info_usuario.php">Informacion Usuario</a></li>
                         <li><a href="php/cerrarSesion.php">Cerrar sesion</a></li>
                         <!-- ... -->
