@@ -177,7 +177,7 @@ eventocon{
 	box-shadow: 3px 3px 1px rgba(0,0,0,.3);
 }
 #contenedor_img{
-	width: 20%;
+	width: 30%;
 	height: 100%;
 	position: relative;
 	float: left;
@@ -185,8 +185,9 @@ eventocon{
 	background-color: transparent;
 }
 .img_evento{
-	width: 100%;
+	width: 85%;
 	height: 150px;
+	left: 7.5%;
 	background-color: #f2f2f2;
 	position: relative;
 	float: left;
@@ -195,23 +196,24 @@ eventocon{
 #form_img{
 	position: relative;
 	float: left;
-	width: 215px !important;
+	width: 100% !important;
     left: -20px;
 	text-align: center;
 	border-radius: 5px;
 	height: 25px;
 	margin-top: 15px;
-    color: white;
+    color: #383F49;
 
 }
 #form_img::-webkit-input-placeholder{
     font-size: 12px;
+	color: #383F49;
 }
 
 #contenedor_formulario{
 	position: relative;
     float: left;
-	width: 75%;
+	width: 65%;
 	margin-top: 10px;
     height: 100%;
 }
@@ -220,7 +222,12 @@ eventocon{
     height: auto;
     margin-left: 8% !important;
     float: left;
+	color: #383F49 !important;
 }
+#input_form::-webkit-input-placeholder{
+	color: #383F49 !important;
+}
+
 #form_desc{
     width: 95% !important;
     height: auto;

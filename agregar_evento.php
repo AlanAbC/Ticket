@@ -45,7 +45,6 @@
             </div>
             <div id="contenedor_zonas">
                 <h3 id="titZonas">Definicion de Zonas</h3>
-                
                 <p id="agregar_zona">Agregar Zona</p>
                  <input class="button_form" type="submit" id="btn_cancelar" value="Cancelar">
                 <input class="button_form" type="submit" id="btn_craer" value="Crear">
