@@ -45,15 +45,16 @@ function llenarEventos(categoria){
 
             // Asignacion del contenedor de los eventos
             var contenedor = $('#eventos');
-
             //Aqui va la la creacion de los eventos a mostrar
             $.each(data['eventos'], function(i, item){
                 var evento = '<div class="small-12 medium-4 large-2 end columns eventocon"  id= "' + item.id + '" >' +
                                 '<div class="evento" style="background-image: url('+ item.foto +');" >' +'</div>'+
                                  '<p class="titulo_evento">' + item.nombre + '</p>'+
                                 '</div>';
+
                 contenedor.append(evento);
             });
+            $("#contenedor").slideToggle("slow");
         } else if (respuesta === "0") {
             //Aqui regresa msg de error de la api
             swal({
@@ -85,9 +86,7 @@ $(".comprar").click(function(event) {
     $("#vista").css({
         display : 'none' 
     });
-    $("#compraboleto").css({
-        display : 'block' 
-    });
+    $("#compraboleto").slideToggle("slow");
 });
 
 //Funcion para realizar la confirmacion de compra y  enviar los datos a la base de datos 
@@ -107,9 +106,7 @@ $("#comprarCon").click(function(event) {
 //Funcion para cancelar la compra del boleto
 $("#comprarCan").click(function(event) {
 
-   $("#vista").css({
-        display : 'block' 
-    });
+   $("#vista").toggle("slow");
     $("#compraboleto").css({
         display : 'none' 
     });
