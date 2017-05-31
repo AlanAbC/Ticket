@@ -1,9 +1,6 @@
 $(document).ready(function(){
 	$('html').niceScroll();
 	$(document).foundation();
-});
-
-$(window).load(function(){
 
     // Obtencion de la url
     var url = window.location.pathname;
@@ -12,7 +9,7 @@ $(window).load(function(){
     if(url == "/Ticket/index.php"){
         cargarEventos();
     }else if(url == "/Ticket/ver_evento.php"){
-        cargarEvento();
+        //cargarEvento();
     }
 });
 
@@ -94,13 +91,13 @@ function verEvento(e){
 // Funcion encargada de llenar la informacion de un evento para mostrarlo
 function cargarEvento(){
      //Obtener valor por vet para el filtro por categoria
-     var categoria = $.getURLParam("e");
+     var id = $.getURLParam("e");
 
      //Validaciones para determinar si mostrara todos los eventos o los filtrara por categoria
-     if(categoria != undefined){
+     if(id != undefined){
 
          // Peticion a la api la informcaion del evento
-         $.getJSON("http://localhost/api/eventos.php?a=findEvento&id=" + categoria, function(data){
+         $.getJSON("http://localhost/api/eventos.php?a=findEvento&id=" + id, function(data){
 
              // Obtencion de la respuesta de la api
              var respuesta = data['res'];
@@ -111,7 +108,7 @@ function cargarEvento(){
              if (respuesta === "1") {
 
                 // Llenado de la paguina con la informacion de la api
-
+                $("#titulo_evento_vista").val(data['evento']['nombre']);
              }else{
                  //Aqui regresa msg de error de la api
                  swal({
