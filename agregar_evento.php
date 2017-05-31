@@ -40,9 +40,15 @@
                     <option value="5">Magia</option>
                 </select>
                 <textarea name="descripcion" id="form_desc" cols="30" rows="5" placeholder="Descripción" required></textarea>
-                <input class="button_form" type="submit" id="btn_cancelar" value="Cancelar">
-                <input class="button_form" type="submit" id="btn_craer" value="Crear">
+               
 
+            </div>
+            <div id="contenedor_zonas">
+                <h3 id="titZonas">Definicion de Zonas</h3>
+                
+                <p id="agregar_zona">Agregar Zona</p>
+                 <input class="button_form" type="submit" id="btn_cancelar" value="Cancelar">
+                <input class="button_form" type="submit" id="btn_craer" value="Crear">
             </div>
 			
 		</form>

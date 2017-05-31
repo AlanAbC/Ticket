@@ -114,6 +114,10 @@ $("#comprarCan").click(function(event) {
         display : 'none' 
     });
 });
+//funcion para agregar elemtos de nueva zona en agregar evento 
+$("#agregar_zona").click(function(event) {
+    $(this).before("<input type='text' class='nombre_zona' placeholder='Nombre de la zona'> <input type='number' class='lugares_zona' placeholder='Cantidad de lugares'> <input type='number' class='precio_zona' placeholder='$ Precio'>");
+});
 /* Copyright (c) 2006 Mathias Bank (http://www.mathias-bank.de)
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
