@@ -396,7 +396,12 @@ eventocon{
 	background-color: transparent;
 	width: 30%;
 	height: 300px;
+	overflow: auto;
 }
+#contenedor_precio::-webkit-scrollbar {
+	width: 1px;
+}
+
 #informacion{
 	width: 100%;
 	height: 30px;
@@ -597,42 +602,104 @@ eventocon{
 /*-----------------------FIN ESTILO ver_evento.php--------*/
 /*-----------------------INICIO ESTILO info_usuario.php--------*/
 #info_usuario{
-	width: 70%;
-	margin-left: 15%;
-	height:430px;
+	width: 60%;
+	left: 50%;
+	margin-left: -30%;
+	height:auto;
 	margin-top:50px;
 	border:1px solid #d9d9d9;
 	background-color: #fff;
 	position: relative;float: left;
 	box-shadow: 3px 3px 1px rgba(0,0,0,.3);
+	display: block;
 }
 #contenedor_info_usuario{
 	position: relative;
 	padding-top: 6%;
 	float: left;
-	width: 65%;
+	width: 100%;
 	margin-top: 10px;
 	height: 100%;
 }
 .p_info{
-	margin-left: 100px !important;
+	position: relative;
+	float: left;
+	width: 80%;
+	margin-left: 10%;
+	padding-left: 20px;
+	box-sizing: border-box;
 	border-bottom: 1px solid #4070A2;
 }
 
 .act_button{
-	position: absolute;
+	position: relative;
+	float: right;
 	background:  #4070A2;
 	width: 90px;
 	height: 30px;
-	top:350px;
+	margin-top: 20px;
+	margin-bottom: 15px;
 	right: 30px;
+	margin-right: 5px;
 	color: white;
+	border-radius: 5px;	
+	padding-top: 3px;
+	box-sizing: border-box;
+	text-align: center;
 }
-
-#act_aceptar{
+.act_button:before{
+	cursor: pointer;
+	content:'';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 0px;
+	background: rgba(255,255,255,0.2);
+	border-radius: 5px;
+	transition: all .2s ease;
+}
+.act_button:hover:before{
+	height: 30px;
+}
+#act_eliminar{
+	width:150px !important;
+}
+#form_info_usuario{
+	width: 60%;
+	left: 50%;
+	margin-left: -30%;
+	height:auto;
+	margin-top:50px;
+	border:1px solid #d9d9d9;
+	background-color: #fff;
+	position: relative;float: left;
+	box-shadow: 3px 3px 1px rgba(0,0,0,.3);
 	display: none;
 }
-
+.input_info{
+	width: 80% !important;
+	margin-left: 10% !important;
+	margin-top: 10px !important;
+}
+#act_guardar{
+	border: none;
+}
+#act_guardar:before{
+	cursor: pointer;
+	content:'';
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 0px;
+	background: rgba(255,255,255,0.2);
+	border-radius: 5px;
+	transition: all .2s ease;
+}
+#act_guardar:hover:before{
+	height: 30px;
+}
 /*-----------------------FIN ESTILO info_usuario.php--------*/
 #footer{
 	height: 300px;

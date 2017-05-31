@@ -74,6 +74,18 @@
                         <p id="precio">Aqui va el #</p>
 
                     </div>
+                    <div id="preciostit">
+                        <p id="precion"><b>Zona C</b></p>
+                        <p class="comprar" id="comprarC">Comprar Boletos</p>
+                        <p id="precio">Aqui va el #</p>
+
+                    </div>
+                    <div id="preciostit">
+                        <p id="precion"><b>Zona C</b></p>
+                        <p class="comprar" id="comprarC">Comprar Boletos</p>
+                        <p id="precio">Aqui va el #</p>
+
+                    </div>
 
                 </div>
 
