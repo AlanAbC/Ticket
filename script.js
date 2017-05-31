@@ -7,6 +7,7 @@ $(window).load(function(){
 	cargarEventos();
 });
 
+/* INICIO INDEX ------------------------------------------------------------------------------------------------------*/
 function cargarEventos(){
 
 	//Obtener valor por vet para el filtro por categoria
@@ -47,8 +48,8 @@ function llenarEventos(categoria){
             var contenedor = $('#eventos');
             //Aqui va la la creacion de los eventos a mostrar
             $.each(data['eventos'], function(i, item){
-                var evento = '<div class="small-12 medium-4 large-2 end columns eventocon"  id= "' + item.id + '" >' +
-                                '<div class="evento" style="background-image: url('+ item.foto +');" >' +'</div>'+
+                var evento = '<div class="small-12 medium-4 large-2 end columns eventocon">' +
+                                '<div class="evento" id= "' + item.id + '" onclick="verEvento(event)" style="background-image: url('+ item.foto +');" >' +'</div>'+
                                  '<p class="titulo_evento">' + item.nombre + '</p>'+
                                 '</div>';
 
@@ -66,6 +67,63 @@ function llenarEventos(categoria){
 
     });
 }
+
+// Funcion encargada de tomar el id del objeto seleccionado y redireccionar a ver evento
+function verEvento(e){
+
+    //Obtencion del id del objeto seleccionado
+    var id = e.target.id;
+
+    // Redireccionamiento a ver eventos con el id del evento seleccionado
+    $(location).attr('href', "ver_evento.php?e=" + id);
+}
+
+/* FIN INDEX ---------------------------------------------------------------------------------------------------------*/
+
+/* INICIO VER_EVENTO -------------------------------------------------------------------------------------------------*/
+
+// Funcion encargada de llenar la informacion de un evento para mostrarlo
+function cargarEvento(){
+     //Obtener valor por vet para el filtro por categoria
+     var categoria = $.getURLParam("e");
+
+     //Validaciones para determinar si mostrara todos los eventos o los filtrara por categoria
+     if(categoria != undefined){
+
+         // Peticion a la api la informcaion del evento
+         $.getJSON("http://localhost/api/eventos.php?a=findEvento&id=" + categoria, function(data){
+
+             // Obtencion de la respuesta de la api
+             var respuesta = data['res'];
+
+             // Comprobacion del resultado, en caso de que sea 1 rellena la paguina con
+             // los eventos disponibles, en caso de que sea 0 muestra mensaje en pantalla
+             // de las respuesta de la api
+             if (respuesta === "1") {
+
+                // Llenado de la paguina con la informacion de la api
+
+             }else{
+                 //Aqui regresa msg de error de la api
+                 swal({
+                 title: data['msg'],
+                 type: 'error',
+                 confirmButtonText: 'Continuar'
+                 });
+             }
+         });
+
+     }else{
+         //Aqui regresa msg de error de la api
+         swal({
+         title: "No se encontro el evento",
+         type: 'error',
+         confirmButtonText: 'Continuar'
+         });
+     }
+ }
+
+/* FIN VER_EVENTO ----------------------------------------------------------------------------------------------------*/
 
 //funcion para obtener el id del boton para comprar boletos y desplegar la ventana de compra
 $(".comprar").click(function(event) {
