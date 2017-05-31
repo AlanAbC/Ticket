@@ -7,10 +7,10 @@
         }else if($_SESSION['tipo'] == "a") {
             include 'header.php';
         }else {
-            include 'header_main.php';
+            header('Location: ../index.php');
         }
     }else{
-        include 'header_main.php';
+        header('Location: ../index.php');
     }
 ?>
 
@@ -22,10 +22,10 @@
                 </div>
 
                 <div id="contenedor_info_usuario">
-                    <p class="p_info" id="info_nombres">Nombres</p>
-                    <p class="p_info" id="info_correo">coreo@vaaqui.com</p>
-                    <p class="p_info" id="info_direccion">ubicacion #16</p>
-                    <p class="p_info" id="info_telefono">4545123548</p>
+                    <p class="p_info" id="info_nombres"><?php print($_SESSION['nombre']); ?></p>
+                    <p class="p_info" id="info_correo"><?php print($_SESSION['correo']); ?></p>
+                    <p class="p_info" id="info_direccion"><?php print($_SESSION['direccion']); ?></p>
+                    <p class="p_info" id="info_telefono"><?php print($_SESSION['telefono']); ?></p>
                     <button class="act_button" id="act_actualizar">Actualizar</button>
                     <button class="act_button" id="act_aceptar">Aceptar</button>
                 </div>
@@ -42,9 +42,6 @@
             $("#act_aceptar").css('display', 'none');
             $("#act_actualizar").css('display', 'block');
         });
-
-
-
 </script>
 
 <?php include 'footer.php'; ?>
