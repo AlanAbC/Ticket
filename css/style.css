@@ -355,7 +355,7 @@ eventocon{
 }
 #contenedor_img_vista{
 	width: 100%;
-	height: 200px;
+	height: auto;
 	position: relative;
 	float: left;
 	background-color: transparent;
@@ -393,7 +393,7 @@ eventocon{
 	width: 70%;
 	position: relative;
 	float: left;
-	height: 300px;
+	height: auto;
 	background-color: transparent;
 	border-right: 1px solid #d9d9d9;
 }
@@ -434,7 +434,7 @@ eventocon{
 	background-color: transparent;
 	margin-top: 5px;
 	width: 100%;
-	height: 30px;
+	height: auto;
 	border-bottom: 1px solid #d9d9d9;
 
 }

@@ -193,11 +193,29 @@ $("#comprarCon").click(function(event) {
           type: 'info',
           showCloseButton: true,
           showCancelButton: true,
+          confirmButtonClass: 'btn btn-success',
+          cancelButtonClass: 'btn btn-danger',
           confirmButtonText:
             'Continuar',
           cancelButtonText:
             'Cancelar'
-        });
+        }).then(function () {
+        swal(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+            )
+        }, function (dismiss) {
+        // dismiss can be 'cancel', 'overlay',
+        // 'close', and 'timer'
+        if (dismiss === 'cancel') {
+            swal(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+            )
+        }
+    })
 });
 
 //Funcion para cancelar la compra del boleto
