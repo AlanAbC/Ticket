@@ -199,6 +199,7 @@ $("#comprarCon").click(function(event) {
             'Cancelar' 
         });
 });
+
 //Funcion para cancelar la compra del boleto
 $("#comprarCan").click(function(event) {
 
@@ -207,11 +208,13 @@ $("#comprarCan").click(function(event) {
         display : 'none' 
     });
 });
+
 //funcion para agregar elemtos de nueva zona en agregar evento 
 $("#agregar_zona").click(function(event) {
     var elemento="<input type='text' class='nombre_zona' placeholder='Nombre de la zona'> <input type='number' class='lugares_zona' placeholder='Cantidad de lugares'> <input type='number' class='precio_zona' placeholder='$ Precio'>";
     $(this).before(elemento);
 });
+
 //funcion para verificar si se desea editar informacion de usuario
 $("#act_actualizar").click(function(event) {
     $("#info_usuario").css({
@@ -219,6 +222,7 @@ $("#act_actualizar").click(function(event) {
     });
     $("#form_info_usuario").slideToggle("slow");
 });
+
 //funcion para desplegar mensaje de confirmacion de actualizacion de usuario y para guardar la informacion actualizada7
 $("#act_guardar").click(function(event) {
     swal({
@@ -232,7 +236,8 @@ $("#act_guardar").click(function(event) {
             'Cancelar' 
         });
 });
-//Funcion para la confirmacion de eliminacion de usuario 
+
+//Funcion para la confirmacion de eliminacion de usuario
 $("#act_eliminar").click(function(event) {
     swal({
         title: '¿Seguro que deseas eliminar tu usuario?',
@@ -246,6 +251,7 @@ $("#act_eliminar").click(function(event) {
             'Cancelar' 
         });
 });
+
 //Funcion para cancelar la edicios de usuario
 $("#act_cancelar").click(function(event) {
      $("#info_usuario").slideToggle("slow");
@@ -253,6 +259,7 @@ $("#act_cancelar").click(function(event) {
         display: 'none'
     });
 });
+
 /* Copyright (c) 2006 Mathias Bank (http://www.mathias-bank.de)
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
