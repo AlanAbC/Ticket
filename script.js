@@ -209,7 +209,8 @@ $("#comprarCan").click(function(event) {
 });
 //funcion para agregar elemtos de nueva zona en agregar evento 
 $("#agregar_zona").click(function(event) {
-    $(this).before("<input type='text' class='nombre_zona' placeholder='Nombre de la zona'> <input type='number' class='lugares_zona' placeholder='Cantidad de lugares'> <input type='number' class='precio_zona' placeholder='$ Precio'>");
+    var elemento="<input type='text' class='nombre_zona' placeholder='Nombre de la zona'> <input type='number' class='lugares_zona' placeholder='Cantidad de lugares'> <input type='number' class='precio_zona' placeholder='$ Precio'>";
+    $(this).before(elemento);
 });
 //funcion para verificar si se desea editar informacion de usuario
 $("#act_actualizar").click(function(event) {
