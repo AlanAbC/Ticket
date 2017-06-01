@@ -4,13 +4,17 @@
     if(isset($_SESSION['tipo'])){
         if($_SESSION['tipo'] == "u"){
             include 'header_user.php';
+            print('<script> var idUsu = '.$_SESSION['id'].'</script>');
         }else if($_SESSION['tipo'] == "a") {
             include 'header.php';
+            print('<script> var idUsu = '.$_SESSION['id'].'</script>');
         }else {
             include 'header_main.php';
+            print('<script> var idUsu = 0</script>');
         }
     }else{
         include 'header_main.php';
+        print('<script> var idUsu = 0</script>');
     }
 ?>
 

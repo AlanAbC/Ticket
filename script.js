@@ -62,7 +62,7 @@ function llenarEventos(categoria){
             $.each(data['eventos'], function(i, item){
                 var evento = '<div class="small-12 medium-4 large-2 end columns eventocon">' +
                                 '<div class="evento" id= "' + item.id + '" onclick="verEvento(event)" style="background-image: url('+ item.foto +');" >' +'</div>'+
-                                 '<p class="titulo_evento">' + item.nombre + '</p>'+
+                                 '<p class="titulo_evento">' + item.nombre.substr(0, 33) + ' ...</p>'+
                                 '</div>';
 
                 contenedor.append(evento);
@@ -89,11 +89,9 @@ function verEvento(e){
     // Redireccionamiento a ver eventos con el id del evento seleccionado
     $(location).attr('href', "ver_evento.php?e=" + id);
 }
-
 /* FIN INDEX ---------------------------------------------------------------------------------------------------------*/
 
 /* INICIO VER_EVENTO -------------------------------------------------------------------------------------------------*/
-
 // Funcion encargada de llenar la informacion de un evento para mostrarlo
 function cargarEvento(){
     //Obtener valor por vet para el filtro por categoria
@@ -141,7 +139,7 @@ function cargarEvento(){
                         $.each(data['secciones'], function(i, item){
                             var seccion = '<div id="preciostit">' +
                                 '<p id="precion"><b>' + item.nombre + '</b></p>' +
-                                '<p class="comprar" onclick="comprar(event)" id="' + item.nombre + '">Comprar Boletos</p>' +
+                                '<p class="comprar" onclick="comprar(event)" id="' + item.nombre + ','+item.id+'">Comprar Boletos</p>' +
                                 '<p id="precio">' + item.costo + '</p>' +
                                 '</div>';
                             contenedor.append(seccion);
@@ -173,59 +171,94 @@ function cargarEvento(){
     }
 }
 
-/* FIN VER_EVENTO ----------------------------------------------------------------------------------------------------*/
-
 //funcion para obtener el id del boton para comprar boletos y desplegar la ventana de compra
 function comprar(event) {
     var id = event.target.id;
-    $("#categoria").text(id);
+    var info = id.split(",");
+    $("#categoria").text(info[0]);
+    $("#comprarCon").removeClass();
+    $("#comprarCon").addClass(info[1]);
     $("#vista").css({
-        display : 'none' 
+        display : 'none'
     });
     $("#compraboleto").slideToggle("slow");
 }
 
-//Funcion para realizar la confirmacion de compra y  enviar los datos a la base de datos 
+//Funcion para realizar la confirmacion de compra y  enviar los datos a la base de datos
 $("#comprarCon").click(function(event) {
 
-    swal({
-        title: '¿Seguro que deseas comprar el boleto?',
-          type: 'info',
-          showCloseButton: true,
-          showCancelButton: true,
-          confirmButtonClass: 'btn btn-success',
-          cancelButtonClass: 'btn btn-danger',
-          confirmButtonText:
-            'Continuar',
-          cancelButtonText:
-            'Cancelar'
-        }).then(function () {
-        swal(
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-            )
-        }, function (dismiss) {
-        // dismiss can be 'cancel', 'overlay',
-        // 'close', and 'timer'
-        if (dismiss === 'cancel') {
-            swal(
-                'Cancelled',
-                'Your imaginary file is safe :)',
-                'error'
-            )
-        }
-    })
+    //Validacion de que el usuario este registrado
+    if(idUsu != 0) {
+
+        // Asignacion de variables necesarias para la peticion
+        var pago = 1;
+        var idSec = this.className;
+
+        //Creacion del mensaje para confirmar la compra del boleto
+        swal({
+                title: "Estás seguro de comprar el boleto?",
+                text: "Al confirmar la compra se cobrará una comicion al pedir una cancelación",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#449D44",
+                confirmButtonText: "Si, Comprar",
+                cancelButtonText: "No, Cancelar",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            function (isConfirm) {
+
+                // Validacion para verificar si el usuario acepta compra el boleto
+                if (isConfirm) {
+                    // Peticion a la api para ingresar la compra del boleto
+                    $.getJSON('http://localhost/api/ventas.php?a=setVenta&idUsu=' + idUsu +
+                        '&idSec=' + idSec +
+                        '&pago=' + pago,
+                        function(data){
+
+                            // Obtencion de la respuesta de la api
+                            respuesta = data['res'];
+
+                            // Comprobacion de la respuesta de la api, si es 1 muestra mensaje de compra
+                            // correcta y en caso de que sea 0 muestra mensaje de error con la respuesta
+                            // de la api
+                            if(respuesta == "1") {
+                                // Mensaje de compra correcta
+                                swal("Correcto!", data['msg'], "success");
+                            }else{
+                                //Aqui regresa msg de error de la api
+                                swal({
+                                    title: data['msg'],
+                                    type: 'error',
+                                    confirmButtonText: 'Continuar'
+                                });
+                            }
+                        }
+                    );
+                } else {
+                    swal("Cancelado", "Se canceló su compra", "error");
+                }
+            });
+    }else{
+        swal({
+            title: "Necesitas estar registrado para poder comprar el boleto",
+            type: 'error',
+            confirmButtonText: 'Aceptar'
+        });
+    }
 });
 
 //Funcion para cancelar la compra del boleto
 $("#comprarCan").click(function(event) {
 
-   $("#vista").toggle("slow");
+    $("#vista").toggle("slow");
     $("#compraboleto").css({
-        display : 'none' 
+        display : 'none'
     });
 });
+/* FIN VER_EVENTO ----------------------------------------------------------------------------------------------------*/
+
+
 
 //funcion para agregar elemtos de nueva zona en agregar evento 
 $("#agregar_zona").click(function(event) {
