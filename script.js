@@ -172,15 +172,10 @@ function cargarEvento(){
 //funcion para obtener el id del boton para comprar boletos y desplegar la ventana de compra
 function comprar(event) {
     var id = event.target.id;
-
     $("#categoria").text(id);
-
-
-
     $("#vista").css({
         display : 'none' 
     });
-
     $("#compraboleto").slideToggle("slow");
 }
 
