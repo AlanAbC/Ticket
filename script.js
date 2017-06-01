@@ -196,7 +196,7 @@ $("#comprarCon").click(function(event) {
           confirmButtonText:
             'Continuar',
           cancelButtonText:
-            'Cancelar' 
+            'Cancelar'
         });
 });
 
