@@ -10,6 +10,12 @@ $(document).ready(function(){
         cargarEventos();
     }else if(url == "/Ticket/ver_evento.php"){
         cargarEvento();
+    }else if(url == "/Ticket/info_usuario.php"){
+        $("#contenedor").slideToggle("slow");
+    }else if(url == "/Ticket/agregar_evento.php"){
+        $("#contenedor").slideToggle("slow");
+    }else if(url == "/Ticket/modificar_evento.php"){
+        $("#contenedor").slideToggle("slow");
     }
 });
 
