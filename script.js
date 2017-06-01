@@ -9,7 +9,7 @@ $(document).ready(function(){
     if(url == "/Ticket/index.php"){
         cargarEventos();
     }else if(url == "/Ticket/ver_evento.php"){
-        //cargarEvento();
+        cargarEvento();
     }
 });
 
@@ -90,68 +90,99 @@ function verEvento(e){
 
 // Funcion encargada de llenar la informacion de un evento para mostrarlo
 function cargarEvento(){
-     //Obtener valor por vet para el filtro por categoria
-     var id = $.getURLParam("e");
+    //Obtener valor por vet para el filtro por categoria
+    var id = $.getURLParam("e");
 
-     //Validaciones para determinar si mostrara todos los eventos o los filtrara por categoria
-     if(id != undefined){
+    //Validaciones para determinar si mostrara todos los eventos o los filtrara por categoria
+    if(id != undefined){
+        // Peticion a la api la informcaion del evento
+        $.getJSON("http://localhost/api/eventos.php?a=findEvento&id=" + id, function(data){
 
-         // Peticion a la api la informcaion del evento
-         $.getJSON("http://localhost/api/eventos.php?a=findEvento&id=" + id, function(data){
+            // Obtencion de la respuesta de la api
+            var respuesta = data['res'];
 
-             // Obtencion de la respuesta de la api
-             var respuesta = data['res'];
-
-             // Comprobacion del resultado, en caso de que sea 1 rellena la paguina con
-             // los eventos disponibles, en caso de que sea 0 muestra mensaje en pantalla
-             // de las respuesta de la api
-             if (respuesta === "1") {
+            // Comprobacion del resultado, en caso de que sea 1 rellena la pagina con
+            // los eventos disponibles, en caso de que sea 0 muestra mensaje en pantalla
+            // de las respuesta de la api
+            if (respuesta === "1") {
 
                 // Llenado de la paguina con la informacion de la api
-                $("#titulo_evento_vista").val(data['evento']['nombre']);
-             }else{
-                 //Aqui regresa msg de error de la api
-                 swal({
-                 title: data['msg'],
-                 type: 'error',
-                 confirmButtonText: 'Continuar'
-                 });
-             }
-         });
+                $("[id*=img_evento_vista]").attr('src', data['evento']['foto']);
+                $("[id*=titulo_evento_vista]").text(data['evento']['nombre']);
+                $("[id*=descripcion_evento_vista]").text(data['evento']['descripcion']);
+                $('.txt_categoria').text(data['evento']['categoria']);
+                $('.txt_lugar').text(data['evento']['lugar']);
+                $('.txt_fecha').text(data['evento']['fecha']);
+                $('.txt_hora').text(data['evento']['hora']);
+                $('.txt_estado').text(data['evento']['estado']);
+                $('.txt_ciudad').text(data['evento']['ciudad']);
+                $('.txt_direccion').text(data['evento']['direccion']);
 
-     }else{
+                // Peticion a la api para obtener las secciones del evento
+                $.getJSON("http://localhost/api/secciones.php?a=getSecciones&id=" + id, function(data){
+
+                    // Obtencion de la respuesta de la api
+                    respuesta = data['res'];
+
+                    // Comprobacion de la respuesta de la api, si es 1 rellenara la parte de secciones
+                    // con su respectiva informcaion en caso de que sea 0 no mostrara texto de
+                    // que no hay secciones para ese evento
+                    if(respuesta == "1"){
+                        // Asignacion del contenedor de los eventos
+                        var contenedor = $('#contenedor_precio');
+
+                        //Aqui va la la creacion de los eventos a mostrar
+                        $.each(data['secciones'], function(i, item){
+                            var seccion = '<div id="preciostit">' +
+                                '<p id="precion"><b>' + item.nombre + '</b></p>' +
+                                '<p class="comprar" onclick="comprar(event)" id="' + item.nombre + '">Comprar Boletos</p>' +
+                                '<p id="precio">' + item.costo + '</p>' +
+                                '</div>';
+                            contenedor.append(seccion);
+                        });
+                    }else{
+                        var htmlNoSec = '<p id="precios">Precios</p>' +
+                            '<div id="preciostit">' +
+                            '<p id="precion"><b>No Hay boletos disponibles para este evento</b></p>' +
+                            '</div>';
+                        $("#contenedor_precio").html(htmlNoSec);
+                    }
+                });
+            }else{
+                //Aqui regresa msg de error de la api
+                swal({
+                    title: data['msg'],
+                    type: 'error',
+                    confirmButtonText: 'Continuar'
+                });
+            }
+         });
+    }else{
          //Aqui regresa msg de error de la api
          swal({
-         title: "No se encontro el evento",
-         type: 'error',
-         confirmButtonText: 'Continuar'
+             title: "No se encontro el evento",
+             type: 'error',
+             confirmButtonText: 'Continuar'
          });
-     }
- }
+    }
+}
 
 /* FIN VER_EVENTO ----------------------------------------------------------------------------------------------------*/
 
 //funcion para obtener el id del boton para comprar boletos y desplegar la ventana de compra
-$(".comprar").click(function(event) {
-    var id=$(this).attr("id");
-    switch (id) {
-        case "comprarA":
-            $("#categoria").text('Zona A');
-            break;
-         case "comprarB":
-            $("#categoria").text('Zona B');
-            break;
-         case "comprarC":
-            $("#categoria").text('Zona C');
-            break;
-        default:
-            break;
-    }
+function comprar(event) {
+    var id = event.target.id;
+
+    $("#categoria").text(id);
+
+
+
     $("#vista").css({
         display : 'none' 
     });
+
     $("#compraboleto").slideToggle("slow");
-});
+}
 
 //Funcion para realizar la confirmacion de compra y  enviar los datos a la base de datos 
 $("#comprarCon").click(function(event) {

@@ -26,36 +26,37 @@
                     <p id="informacion">Informacion</p>
                     <div id="infotit">
                         <p id="infon"><b>Categoria:</b></p>
-                        <p id="info">Aqui va el #</p>
+                        <p id="info" class="txt_categoria">Aqui va el #</p>
                     </div>
                     <div id="infotit">
                         <p id="infon"><b>Lugar:</b></p>
-                        <p id="info">Aqui va el #</p>
+                        <p id="info" class="txt_lugar">Aqui va el #</p>
                     </div>
                     <div id="infotit">
                         <p id="infon"><b>Fecha:</b></p>
-                        <p id="info">Aqui va el #</p>
+                        <p id="info" class="txt_fecha">Aqui va el #</p>
                     </div>
                     <div id="infotit">
                         <p id="infon"><b>Hora:</b></p>
-                        <p id="info">Aqui va el #</p>
+                        <p id="info" class="txt_hora">Aqui va el #</p>
                     </div>
                     <div id="infotit">
                         <p id="infon"><b>Estado:</b></p>
-                        <p id="info">Aqui va el #</p>
+                        <p id="info" class="txt_estado">Aqui va el #</p>
                     </div>
                     <div id="infotit">
                         <p id="infon"><b>Ciudad:</b></p>
-                        <p id="info">Aqui va el #</p>
+                        <p id="info" class="txt_ciudad">Aqui va el #</p>
                     </div>
                     <div id="infotit">
                         <p id="infon"><b>Direccion:</b></p>
-                        <p id="info">Aqui va el #</p>
+                        <p id="info" class="txt_direccion">Aqui va el #</p>
                     </div>
 
                 </div>
                 <div id="contenedor_precio">
                     <p id="precios">Precios</p>
+                    <!--
                     <div id="preciostit">
                         <p id="precion"><b>Zona A</b></p>
                         <p class="comprar" id="comprarA">Comprar Boletos</p>
@@ -86,7 +87,7 @@
                         <p id="precio">Aqui va el #</p>
 
                     </div>
-
+                   -->
                 </div>
 
             </div>
