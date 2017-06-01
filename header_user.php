@@ -21,12 +21,12 @@
 </head>
 <div class="small-12 columns" id="header">
     <div class="small-12 columns" id="header-up">
-        <h2 id="logo" class="small-4 columns"><a href="index.php" id="logoa">Tickets</a></h2>
-        <div class="small-4 columns">
+        <h2 id="logo" class="large-4 medium-6 small-6 columns"><a href="index.php" id="logoa">Tickets</a></h2>
+        <div class="large-4 columns hide-for-small-only hide-for-medium-only">
             <input type="text" id="buscador" placeholder="Buscar">
             <p id="buscar">Buscar</p>
         </div>
-        <div class="small-4 columns">
+        <div class="large-4 medium-6 small-6 columns">
 
             <ul class="dropdown menu" data-dropdown-menu id="ulusuario">
                 <li>
@@ -41,9 +41,8 @@
             </ul>
         </div>
     </div>
-    <div class="small-12 columns" id="header-down">
+    <div class="large-12 columns hide-for-small-only" id="header-down">
 
-        <div class="large-12 columns hide-for-medium-only hide-for-small-only"></div>
         <ul class="menu ">
             <li><a href="index.php?c=concierto">Conciertos</a></li>
             <li><a href="index.php?c=teatro">Teatro</a></li>
