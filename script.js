@@ -8,6 +8,8 @@ $(document).ready(function(){
     // Validacion de la url y dependiendo de la misma hace una accion
     if(url == "/Ticket/index.php"){
         cargarEventos();
+    }else if(url == "/Ticket/"){
+        cargarEventos();
     }else if(url == "/Ticket/ver_evento.php"){
         cargarEvento();
     }else if(url == "/Ticket/info_usuario.php"){
@@ -61,9 +63,10 @@ function llenarEventos(categoria){
             //Aqui va la la creacion de los eventos a mostrar
             $.each(data['eventos'], function(i, item){
                 var evento = '<div class="small-12 medium-4 large-2 end columns eventocon">' +
-                                '<div class="evento" id= "' + item.id + '" onclick="verEvento(event)" style="background-image: url('+ item.foto +');" >' +'</div>'+
-                                 '<p class="titulo_evento">' + item.nombre.substr(0, 28) + ' ...</p>'+
-                                '</div>';
+                    '<div class="evento" id= "' + item.id +
+                        '" onclick="verEvento(event)" style="background-image: url('+ item.foto +');" >' +'</div>'+
+                    '<p class="titulo_evento">' + item.nombre.substr(0, 28) + ' ...</p>'+
+                    '</div>';
 
                 contenedor.append(evento);
             });
@@ -139,7 +142,8 @@ function cargarEvento(){
                         $.each(data['secciones'], function(i, item){
                             var seccion = '<div id="preciostit">' +
                                 '<p id="precion"><b>' + item.nombre + '</b></p>' +
-                                '<p class="comprar" onclick="comprar(event)" id="' + item.nombre + ','+item.id+'">Comprar Boletos</p>' +
+                                '<p class="comprar" onclick="comprar(event)" id="' + item.nombre +
+                                    ','+item.id+'">Comprar Boletos</p>' +
                                 '<p id="precio">' + item.costo + '</p>' +
                                 '</div>';
                             contenedor.append(seccion);
@@ -330,7 +334,9 @@ $("#act_guardar").click(function(event) {
                             timer: 2000,
                             showConfirmButton: false
                         });
-                        $(location).attr("href", "php/actualizarInfoUsuario.php?c=" + data['usuario']['Correo'] + "&p=" + data['usuario']['Contraseña']);
+                        $(location).attr("href", "php/actualizarInfoUsuario.php?c=" +
+                            data['usuario']['Correo'] +
+                            "&p=" + data['usuario']['Contraseña']);
                     } else {
                         //Aqui regresa msg de error de la api
                         swal({
@@ -415,16 +421,139 @@ $("#act_cancelar").click(function(event) {
         display: 'none'
     });
 });
+/* FIN INFO_USUARIO --------------------------------------------------------------------------------------------------*/
 
-
-/* FIN INFO_USUARIO -----------------------------------------------------------------------------------------------*/
-
-//funcion para agregar elemtos de nueva zona en agregar evento
-//Funcion para cancelar la compra del boleto
+/* INICIO AGREGAR_EVENTO ---------------------------------------------------------------------------------------------*/
+//Funcion para agregar elemtos de nueva zona en agregar evento
+var contador = 0;
 $("#agregar_zona").click(function(event) {
-    var elemento="<input type='text' class='nombre_zona' placeholder='Nombre de la zona'> <input type='number' class='lugares_zona' placeholder='Cantidad de lugares'> <input type='number' class='precio_zona' placeholder='$ Precio'>";
+    var elemento="<input type='text' id='inp_nombre " + contador +
+            "' class='nombre_zona' placeholder='Nombre de la zona'> " +
+        "<input type='number' id='inp_lugares " + contador +
+            "' class='lugares_zona' placeholder='Cantidad de lugares'> " +
+        "<input type='number' id='inp_precio " + contador +
+            "' class='precio_zona' placeholder='$ Precio'>";
     $(this).before(elemento);
+    contador ++;
 });
+
+// Funcion que muestra la imagen del url ingresado
+$('#form_img').focusout(function (){
+    //Obtencion del contenido del input
+    var url = $('#form_img').val();
+    if(url != ''){
+        $('#img_mostrar').attr('src', url);
+    }
+});
+
+//Funcion del boton cancelar
+$("#btn_cancelar").click(function(){
+    swal({
+            title: '¿Esta seguro de que desea cancelar?',
+            text: "Se borrara cualquier cambio realizado",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Aceptar",
+            cancelButtonText: "Cancelar",
+            closeOnConfirm: false
+        },
+        function(){
+            swal({
+                title: "Cancelado",
+                type: "success",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            setTimeout(function(){
+                $(location).attr('href', 'index.php');
+            }, 1000);
+            //$(location).attr('href', 'index.php');
+        }
+    );
+
+});
+
+//Funcion del boton de aceptar
+$("#btn_crear").click(function(){
+    //Asignacion de variables
+    var nombre = $('#form_nombre').val();
+    var estado = $('#form_estado').val();
+    var ciudad = $('#form_ciudad').val();
+    var direccion = $('#form_dir').val();
+    var lugar = $('#form_lugar').val();
+    var fecha = $('#form_fecha').val();
+    var hora = $('#form_hora').val();
+    var categoria = $('#form_cat').val();
+    var descripcion = $('#form_desc').val();
+    var imagen = $('#form_img').val();
+
+    // Validacion de que los campos no esten vacios
+    if(nombre == ''){
+        swal({
+            title: 'Falta ingresar el nombre del evento',
+            type: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+    }else if(estado == ''){
+        swal({
+            title: 'Falta ingresar el estado del evento',
+            type: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+    }else if(ciudad== ''){
+        swal({
+            title: 'Falta ingresar la ciudad del evento',
+            type: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+    }else if(direccion == ''){
+        swal({
+            title: 'Falta ingresar la direccion del evento',
+            type: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+    }else if(lugar == ''){
+        swal({
+            title: 'Falta ingresar el lugar del evento',
+            type: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+    }else if(fecha == ''){
+        swal({
+            title: 'Falta ingresar la fecha del evento',
+            type: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+    }else if(hora == ''){
+        swal({
+            title: 'Falta ingresar la hora del evento',
+            type: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+    }else if(categoria == 0){
+        swal({
+            title: 'Falta seleccionar una categoria del evento',
+            type: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+    }else if(descripcion == ''){
+        swal({
+            title: 'Falta ingresar la descripcion del evento',
+            type: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+    }else if(imagen == ''){
+        swal({
+            title: 'Falta ingresar la imagen del evento',
+            type: 'warning',
+            confirmButtonText: 'Aceptar'
+        });
+    }else{
+        alert('Si');
+    }
+});
+/* FIN AGREGAR_EVENTO ------------------------------------------------------------------------------------------------*/
 
 /* Copyright (c) 2006 Mathias Bank (http://www.mathias-bank.de)
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
