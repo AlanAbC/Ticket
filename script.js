@@ -550,7 +550,116 @@ $("#btn_crear").click(function(){
             confirmButtonText: 'Aceptar'
         });
     }else{
-        alert('Si');
+        if(contador == 0){
+            swal({
+                    title: "¿Esta seguro?",
+                    text: "No tiene ninguna seccion agregada, ¿Desea continuar?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Si, Continuar",
+                    cancelButtonText: "No, Cancelar",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        //Peticion a la api para insertar el evento
+                        $.getJSON('http://localhost/api/eventos.php?a=setEvento&nom=' + nombre +
+                            '&est=' + estado + '&ciu=' + ciudad + '&dir=' + direccion +
+                            '&lug=' + lugar + '&fec=' + fecha + '&hor=' + hora +
+                            '&img=' + imagen + '&des=' + descripcion + '&cat=' + categoria,
+                            function(data){
+                                //Obtencion de la respuesta del servidor
+                                respuesta = data['res'];
+
+                                //Validacion de la respuesta
+                                if(res == "1"){
+                                    swal({
+                                        title: "Correcto",
+                                        text: data['msg'],
+                                        type: "success",
+                                        timer: 1000,
+                                        showConfirmButton: false
+                                    });
+                                    setTimeout(function(){
+                                        $(location).attr('href', 'index.php');
+                                    }, 1000);
+                                }else{
+                                    swal({
+                                        title: 'Error',
+                                        text: data['msg'],
+                                        type: 'error',
+                                        confirmButtonText: 'Aceptar'
+                                    });
+                                }
+                            }
+                        );
+                    } else {
+                        swal({
+                            title: "Cancelado",
+                            type: "error",
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
+                    }
+                }
+            );
+        }else{
+            //Peticion a la api para insertar el evento
+            $.getJSON('http://localhost/api/eventos.php?a=setEvento&nom=' + nombre +
+                '&est=' + estado + '&ciu=' + ciudad + '&dir=' + direccion +
+                '&lug=' + lugar + '&fec=' + fecha + '&hor=' + hora +
+                '&img=' + imagen + '&des=' + descripcion + '&cat=' + categoria,
+                function(data){
+                    //Obtencion de la respuesta del servidor
+                    respuesta = data['res'];
+
+                    //Validacion de la respuesta
+                    if(res == "1"){
+                        // Asignacion de variable bandera para verificar errores
+                        var flag = 0;
+
+                        // Se ejecuta en un ciclo la insercion de las secciones
+                        for($i = 0; $i < contador; $i ++){
+
+                        }
+
+                        // Validacion de errores
+                        if(flag == 0){
+                            swal({
+                                title: "Correcto",
+                                text: "Se agrego correctamente el evento",
+                                type: "success",
+                                timer: 1000,
+                                showConfirmButton: false
+                            });
+                            setTimeout(function(){
+                                $(location).attr('href', 'index.php');
+                            }, 1000);
+                        }else{
+                            swal({
+                                title: "Correcto",
+                                text: "Se agrego correctamente el evento, pero algunas secciones fallaron",
+                                type: "warning",
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            setTimeout(function(){
+                                $(location).attr('href', 'index.php');
+                            }, 2000);
+                        }
+                    }else{
+                        swal({
+                            title: 'Error',
+                            text: data['msg'],
+                            type: 'error',
+                            confirmButtonText: 'Aceptar'
+                        });
+                    }
+                }
+            );
+        }
     }
 });
 /* FIN AGREGAR_EVENTO ------------------------------------------------------------------------------------------------*/
