@@ -3,7 +3,7 @@
 <?php
     if(isset($_SESSION['tipo'])){
         if($_SESSION['tipo'] == "u"){
-            include 'header_user.php';
+            header('Location: Prohibido.php');
         }else if($_SESSION['tipo'] == "a") {
             include 'header.php';
         }else {
