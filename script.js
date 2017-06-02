@@ -427,11 +427,11 @@ $("#act_cancelar").click(function(event) {
 //Funcion para agregar elemtos de nueva zona en agregar evento
 var contador = 0;
 $("#agregar_zona").click(function(event) {
-    var elemento="<input type='text' id='inp_nombre " + contador +
+    var elemento="<input type='text' id='inp_nombre-" + contador +
             "' class='nombre_zona' placeholder='Nombre de la zona'> " +
-        "<input type='number' id='inp_lugares " + contador +
+        "<input type='number' id='inp_lugares-" + contador +
             "' class='lugares_zona' placeholder='Cantidad de lugares'> " +
-        "<input type='number' id='inp_precio " + contador +
+        "<input type='number' id='inp_precio-" + contador +
             "' class='precio_zona' placeholder='$ Precio'>";
     $(this).before(elemento);
     contador ++;
@@ -475,7 +475,7 @@ $("#btn_cancelar").click(function(){
 });
 
 //Funcion del boton de aceptar
-$("#btn_crear").click(function(){
+function crearEvento(){
     //Asignacion de variables
     var nombre = $('#form_nombre').val();
     var estado = $('#form_estado').val();
@@ -564,17 +564,30 @@ $("#btn_crear").click(function(){
                 },
                 function(isConfirm){
                     if (isConfirm) {
+                        //Creacion de array para mandar
+                        var datos = {
+                            a: 'setEvento',
+                            nom: nombre,
+                            est: estado,
+                            ciu: ciudad,
+                            dir: direccion,
+                            lug: lugar,
+                            fec: fecha,
+                            hor: hora,
+                            img: imagen,
+                            des: descripcion,
+                            cat: categoria
+                        };
+
                         //Peticion a la api para insertar el evento
-                        $.getJSON('http://localhost/api/eventos.php?a=setEvento&nom=' + nombre +
-                            '&est=' + estado + '&ciu=' + ciudad + '&dir=' + direccion +
-                            '&lug=' + lugar + '&fec=' + fecha + '&hor=' + hora +
-                            '&img=' + imagen + '&des=' + descripcion + '&cat=' + categoria,
+                        $.getJSON('http://localhost/api/eventos.php', datos,
                             function(data){
                                 //Obtencion de la respuesta del servidor
                                 respuesta = data['res'];
 
                                 //Validacion de la respuesta
-                                if(res == "1"){
+                                if(respuesta == "1"){
+                                    console.log(data['id']);
                                     swal({
                                         title: "Correcto",
                                         text: data['msg'],
@@ -606,23 +619,65 @@ $("#btn_crear").click(function(){
                 }
             );
         }else{
+            //Creacion de array para mandar
+            var datos = {
+                a: 'setEvento',
+                nom: nombre,
+                est: estado,
+                ciu: ciudad,
+                dir: direccion,
+                lug: lugar,
+                fec: fecha,
+                hor: hora,
+                img: imagen,
+                des: descripcion,
+                cat: categoria
+            };
+
             //Peticion a la api para insertar el evento
-            $.getJSON('http://localhost/api/eventos.php?a=setEvento&nom=' + nombre +
-                '&est=' + estado + '&ciu=' + ciudad + '&dir=' + direccion +
-                '&lug=' + lugar + '&fec=' + fecha + '&hor=' + hora +
-                '&img=' + imagen + '&des=' + descripcion + '&cat=' + categoria,
+            $.getJSON('http://localhost/api/eventos.php', datos,
                 function(data){
                     //Obtencion de la respuesta del servidor
                     respuesta = data['res'];
 
                     //Validacion de la respuesta
-                    if(res == "1"){
-                        // Asignacion de variable bandera para verificar errores
+                    if(respuesta == "1"){
+                        // Asignacion de variable bandera para verificar errores e id del evento
                         var flag = 0;
-
+                        var idEve = data['id'];
                         // Se ejecuta en un ciclo la insercion de las secciones
                         for($i = 0; $i < contador; $i ++){
+                            //Obtencion de valores
+                            var nombre = $('#inp_nombre-' + $i).val();
+                            var lugares = $('#inp_lugares-' + $i).val();
+                            var precio = $('#inp_precio-' + $i).val();
 
+                            //Validacion de campos vacios, en caso de campos vacios se descarta
+                            if(nombre != ''){
+                                if(lugares != ''){
+                                    if(precio != ''){
+                                        // Peticion a la api para insertar la seccion
+                                        $.getJSON('http://localhost/api/secciones.php?a=setSeccion&nom=' + nombre +
+                                            '&cos=' + precio + '&lug=' + lugares + '&idEve=' + idEve,
+                                            function(data){
+                                                //Obtencion de la respuesta del servidor
+                                                respuesta = data['res'];
+
+                                                //Validacion de la respuesta del servidor
+                                                if(respuesta == "0"){
+                                                    flag ++;
+                                                }
+                                            }
+                                        );
+                                    }else{
+                                        flag ++;
+                                    }
+                                }else{
+                                    flag ++;
+                                }
+                            }else{
+                                flag ++;
+                            }
                         }
 
                         // Validacion de errores
@@ -661,7 +716,7 @@ $("#btn_crear").click(function(){
             );
         }
     }
-});
+};
 /* FIN AGREGAR_EVENTO ------------------------------------------------------------------------------------------------*/
 
 /* Copyright (c) 2006 Mathias Bank (http://www.mathias-bank.de)

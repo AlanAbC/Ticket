@@ -57,7 +57,7 @@
                 <h3 id="titZonas">Definicion de Zonas</h3>
                 <p id="agregar_zona">Agregar Zona</p>
                 <p class="button_form" id="btn_cancelar">Cancelar</p>
-                <p class="button_form"id="btn_crear">Crear</p>
+                <p class="button_form" id="btn_crear" onclick="crearEvento()">Crear</p>
             </div>
 			
 		</div>
