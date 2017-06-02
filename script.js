@@ -62,7 +62,7 @@ function llenarEventos(categoria){
             $.each(data['eventos'], function(i, item){
                 var evento = '<div class="small-12 medium-4 large-2 end columns eventocon">' +
                                 '<div class="evento" id= "' + item.id + '" onclick="verEvento(event)" style="background-image: url('+ item.foto +');" >' +'</div>'+
-                                 '<p class="titulo_evento">' + item.nombre.substr(0, 33) + ' ...</p>'+
+                                 '<p class="titulo_evento">' + item.nombre.substr(0, 28) + ' ...</p>'+
                                 '</div>';
 
                 contenedor.append(evento);
@@ -307,6 +307,8 @@ $("#act_guardar").click(function(event) {
                     telefono = $('#inp_telefono').attr('placeholder');
                 }
             }
+
+            console.log(idUsu+correo+nombre+direccion+telefono);
             // Peticion a la api el update del usuario
             $.getJSON('http://localhost/api/login.php?a=updateUsuario&id=' + idUsu +
                 '&nom=' + nombre +
@@ -352,17 +354,58 @@ $("#act_guardar").click(function(event) {
 
 //Funcion para la confirmacion de eliminacion de usuario
 $("#act_eliminar").click(function(event) {
+    //Obtencion del id del usuario
+    var idUsu = $("#inp_idUsu").val();
+
     swal({
-        title: '¿Seguro que deseas eliminar tu usuario?',
-        text: 'Toda tu informacion y eventos asignados seran eliminados',
-        type: 'info',
-        showCloseButton: true,
-        showCancelButton: true,
-        confirmButtonText:
-            'Continuar',
-        cancelButtonText:
-            'Cancelar'
-    });
+            title: '¿Seguro que deseas eliminar tu usuario?',
+            text: 'Toda tu informacion y eventos asignados seran eliminados',
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Si, Eliminar usuario",
+            cancelButtonText: "No, Cancelar",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                // Peticion a la api para eliminar al usuario
+                $.getJSON('http://localhost/api/login.php?a=deleteUsuario&id=' + idUsu, function(data){
+
+                    // Obtencion de la respuesta de la peticion
+                    respuesta = data['res'];
+
+                    // Validacion de la respuesta
+                    if(respuesta == "1"){
+                        // Crea mensaje de operacion correcta y cierra sesion
+                        swal({
+                            title: "Correcto",
+                            text: data['msg'],
+                            type: "success",
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                        $(location).attr('href', 'php/cerrarSesion.php')
+                    }else{
+                        //Aqui regresa msg de error de la api
+                        swal({
+                            title: data['msg'],
+                            type: 'error',
+                            confirmButtonText: 'Continuar'
+                        });
+                    }
+                });
+            } else {
+                swal({
+                    title: "Cancelado",
+                    type: "error",
+                    timer: 1000,
+                    showConfirmButton: false
+                });
+            }
+        }
+    );
 });
 
 //Funcion para cancelar la edicios de usuario
