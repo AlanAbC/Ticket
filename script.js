@@ -248,7 +248,6 @@ $("#comprarCon").click(function(event) {
     }
 });
 
-//Funcion para cancelar la compra del boleto
 $("#comprarCan").click(function(event) {
 
     $("#vista").toggle("slow");
@@ -258,14 +257,7 @@ $("#comprarCan").click(function(event) {
 });
 /* FIN VER_EVENTO ----------------------------------------------------------------------------------------------------*/
 
-
-
-//funcion para agregar elemtos de nueva zona en agregar evento 
-$("#agregar_zona").click(function(event) {
-    var elemento="<input type='text' class='nombre_zona' placeholder='Nombre de la zona'> <input type='number' class='lugares_zona' placeholder='Cantidad de lugares'> <input type='number' class='precio_zona' placeholder='$ Precio'>";
-    $(this).before(elemento);
-});
-
+/* INICIO INFO_USUARIO -----------------------------------------------------------------------------------------------*/
 //funcion para verificar si se desea editar informacion de usuario
 $("#act_actualizar").click(function(event) {
     $("#info_usuario").css({
@@ -274,18 +266,88 @@ $("#act_actualizar").click(function(event) {
     $("#form_info_usuario").slideToggle("slow");
 });
 
-//funcion para desplegar mensaje de confirmacion de actualizacion de usuario y para guardar la informacion actualizada7
+//funcion para desplegar mensaje de confirmacion de actualizacion de usuario y para guardar la informacion actualizada
 $("#act_guardar").click(function(event) {
+
+    // Obtencion de los valores
+    var nombre = $('#inp_nombre').val();
+    var direccion = $('#inp_direccion').val();
+    var telefono = $('#inp_telefono').val();
+    var idUsu = $('#inp_idUsu').val();
+    var correo = $('#inp_correoUsu').val();
+
+    // Creacion de ventana de confirmacion
     swal({
-        title: '¿Seguro que deseas modificar tu informacion?',
-          type: 'info',
-          showCloseButton: true,
-          showCancelButton: true,
-          confirmButtonText:
-            'Continuar',
-          cancelButtonText:
-            'Cancelar' 
-        });
+        title: "¿Seguro que deseas modificar tu informacion?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#449D44",
+        confirmButtonText: "Si, Guardar cambios",
+        cancelButtonText: "No, Cancelar",
+        closeOnConfirm: false,
+        closeOnCancel: false
+    },
+    function(isConfirm){
+        if (isConfirm) {
+            // Validacion de los campos
+            if(nombre == ''){
+                nombre = $('#inp_nombre').attr('placeholder');
+            }
+            if(direccion == ''){
+                if($('#inp_direccion').attr('placeholder') == 'Direccion'){
+                    direccion = '';
+                }else{
+                    direccion = $('#inp_direccion').attr('placeholder');
+                }
+            }
+            if(telefono == ''){
+                if($('#inp_telefono').attr('placeholder') == 'Telefono'){
+                    telefono = '';
+                }else{
+                    telefono = $('#inp_telefono').attr('placeholder');
+                }
+            }
+            // Peticion a la api el update del usuario
+            $.getJSON('http://localhost/api/login.php?a=updateUsuario&id=' + idUsu +
+                '&nom=' + nombre +
+                '&cor=' + correo +
+                '&dir=' + direccion +
+                '&tel=' + telefono,
+                function(data) {
+                    // Obtencion de la respuesta de la api
+                    respuesta = data['res'];
+
+                    // Comprobacion de la respuesta de la api, si es 1 muestra mensaje de compra
+                    // correcta y en caso de que sea 0 muestra mensaje de error con la respuesta
+                    // de la api
+                    if (respuesta == "1") {
+                        swal({
+                            title: "Correcto",
+                            text: 'Redireccionando al inicio...',
+                            type: "success",
+                            timer: 2000,
+                            showConfirmButton: false
+                        });
+                        $(location).attr("href", "php/actualizarInfoUsuario.php?c=" + data['usuario']['Correo'] + "&p=" + data['usuario']['Contraseña']);
+                    } else {
+                        //Aqui regresa msg de error de la api
+                        swal({
+                            title: data['msg'],
+                            type: 'error',
+                            confirmButtonText: 'Continuar'
+                        });
+                    }
+                }
+            );
+        }else{
+            swal({
+                title: "Cancelado",
+                type: "error",
+                timer: 1000,
+                showConfirmButton: false
+            });
+        }
+    });
 });
 
 //Funcion para la confirmacion de eliminacion de usuario
@@ -293,22 +355,32 @@ $("#act_eliminar").click(function(event) {
     swal({
         title: '¿Seguro que deseas eliminar tu usuario?',
         text: 'Toda tu informacion y eventos asignados seran eliminados',
-          type: 'info',
-          showCloseButton: true,
-          showCancelButton: true,
-          confirmButtonText:
+        type: 'info',
+        showCloseButton: true,
+        showCancelButton: true,
+        confirmButtonText:
             'Continuar',
-          cancelButtonText:
-            'Cancelar' 
-        });
+        cancelButtonText:
+            'Cancelar'
+    });
 });
 
 //Funcion para cancelar la edicios de usuario
 $("#act_cancelar").click(function(event) {
-     $("#info_usuario").slideToggle("slow");
+    $("#info_usuario").slideToggle("slow");
     $("#form_info_usuario").css({
         display: 'none'
     });
+});
+
+
+/* FIN INFO_USUARIO -----------------------------------------------------------------------------------------------*/
+
+//funcion para agregar elemtos de nueva zona en agregar evento
+//Funcion para cancelar la compra del boleto
+$("#agregar_zona").click(function(event) {
+    var elemento="<input type='text' class='nombre_zona' placeholder='Nombre de la zona'> <input type='number' class='lugares_zona' placeholder='Cantidad de lugares'> <input type='number' class='precio_zona' placeholder='$ Precio'>";
+    $(this).before(elemento);
 });
 
 /* Copyright (c) 2006 Mathias Bank (http://www.mathias-bank.de)
