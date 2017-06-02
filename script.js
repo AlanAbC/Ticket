@@ -26,7 +26,6 @@ function cargarEventos(){
 
 	//Obtener valor por vet para el filtro por categoria
 	var categoria = $.getURLParam("c");
-	console.log(categoria);
 
 	//Validaciones para determinar si mostrara todos los eventos o los filtrara por categoria
 	if(categoria == undefined){
@@ -40,7 +39,43 @@ function cargarEventos(){
             llenarEventos("getDeportes");
 		}else if(categoria == "cultural"){
             llenarEventos("getCulturales");
-		}else{
+		}else if(categoria == "user"){
+		    var id = $.getURLParam('id');
+
+            // Conexion con la api pidiendo todos los eventos existentes
+            $.getJSON("http://localhost/api/ventas.php?a=getVentasUsuario&id=" + id,function(data) {
+
+                // Obtencion de la respuesta de la api
+                var respuesta = data['res'];
+
+                // Comprobacion del resultado, en caso de que sea 1 rellena la paguina con
+                // los eventos disponibles, en caso de que sea 0 muestra mensaje en pantalla
+                // de las respuesta de la api
+                if (respuesta === "1") {
+
+                    // Asignacion del contenedor de los eventos
+                    var contenedor = $('#eventos');
+                    //Aqui va la la creacion de los eventos a mostrar
+                    $.each(data['compras'], function (i, item) {
+                        var evento = '<div class="small-12 medium-4 large-2 end columns eventocon">' +
+                            '<div class="evento" id= "' + item.id_evento +
+                            '" onclick="verEvento(event)" style="background-image: url(' + item.foto + ');" >' + '</div>' +
+                            '<p class="titulo_evento">' + item.nombre_evento.substr(0, 28) + ' ...</p>' +
+                            '</div>';
+
+                        contenedor.append(evento);
+                    });
+                    $("#contenedor").slideToggle("slow");
+                } else if (respuesta === "0") {
+                    //Aqui regresa msg de error de la api
+                    swal({
+                        title: data['msg'],
+                        type: 'error',
+                        confirmButtonText: 'Continuar'
+                    });
+                }
+            });
+        }else{
             llenarEventos("getConciertos");
         }
 	}
@@ -92,6 +127,24 @@ function verEvento(e){
     // Redireccionamiento a ver eventos con el id del evento seleccionado
     $(location).attr('href', "ver_evento.php?e=" + id);
 }
+
+//funcion encargada de hacer la busqueda
+$("#buscar").click(function(){
+    //Obtencion de la busqueda
+    var buscar = $("#buscador").val();
+
+    //Validacion de que el contenido del buscador no este vacio
+    if(buscar == ""){
+        //creacion del cuadro de dialogo de buscador vacio
+        swal({
+            title: "Ingresa primero algo en la barra de busqueda",
+            type: 'warning',
+            confirmButtonText: 'Continuar'
+        });
+    }else{
+
+    }
+});
 /* FIN INDEX ---------------------------------------------------------------------------------------------------------*/
 
 /* INICIO VER_EVENTO -------------------------------------------------------------------------------------------------*/

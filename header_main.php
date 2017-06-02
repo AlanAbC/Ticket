@@ -26,7 +26,7 @@
             <p id="buscar">Buscar</p>
         </div>
         <div class="small-4 columns">
-            <p id="iniciar"><a href="login.php">Iniciar Sesion <?php //print($_SESSION['correo']); ?></a></p>
+            <p id="iniciar"><a href="login.php">Iniciar Sesion</a></p>
         </div>
     </div>
     <div class="small-12 columns" id="header-down">
