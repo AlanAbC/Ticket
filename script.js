@@ -60,7 +60,7 @@ $("#buscar").click(function(){
                 setTimeout(function(){
                     contenedor.html(evento);
                     $("#contenedor").slideToggle("slow");
-                }, 1000);
+                }, 800);
             }else{
                 //Aqui regresa msg de error de la api
                 swal({
